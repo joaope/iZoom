@@ -1,0 +1,13 @@
+{
+    "extensionName":
+    {
+        "message": "iZoom",
+        "description": "Extension name."
+    },
+    
+    "extensionDescription":
+    {
+        "message": "iZoom takes care of zoom level for you.",
+        "description": "Extension description."
+    }
+}
