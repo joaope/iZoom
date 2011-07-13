@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/options.js"></script>
+        <script src="scripts/popup.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheets/popup.css"/>
+    </head>
+    <body onload="initPopup()">
+        
+        <div id="main-div">
+            <div id="main-title"></div>
+        </div>
+        
+        <div id="options">
+            
+            <div class="option">
+                <span class="option-title" id="enabled-name"></span>
+                <input name="enabled" id="enabled-yes" type="radio" onclick="popupQuickSave()"/>
+                    <label id="enabled-yes-label" for="enabled-yes"><b></b></label>
+                    <br>            
+                <input name="enabled" id="enabled-no" type="radio" onclick="popupQuickSave()"/>
+                    <label id="enabled-no-label" for="enabled-no"></label>
+            </div>
+            
+            <div class="option" style="margin:0px;">
+                <span class="option-title" id="zoomMode-name"></span>
+                <input id="zoomMode-shrinkOnly" type="radio" name="zoomMode" onclick="popupQuickSave()"/>
+                    <label id="zoomMode-shrinkOnly-label" for="zoomMode-shrinkOnly"></label>
+                    <br>            
+                <input id="zoomMode-growOnly" type="radio" name="zoomMode" onclick="popupQuickSave()"/>
+                    <label id="zoomMode-growOnly-label" for="zoomMode-growOnly"></label>
+                    <br>            
+                <input id="zoomMode-shrinkAndGrow" type="radio" name="zoomMode" onclick="popupQuickSave()"/>
+                    <label id="zoomMode-shrinkAndGrow-label" for="zoomMode-shrinkAndGrow"></label>
+            </div>
+        </div>
+        
+        <div id="require-reload"></div>
+        
+    </body>
+</html>

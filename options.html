@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/options.js"></script>
+        <link rel="stylesheet" type="text/css" href="stylesheets/options.css"/>
+    </head>
+    
+    <body onLoad="initOptions()">
+        <div id="main-div">
+            <div id="main-title"></div>
+            <div class="buttons">
+                <span class="refreshWarning" id="refreshWarningTop"></span>
+                <a class="button" id="saveButtonTop" onclick="saveOptions()"></a>               
+                <a class="button" id="cancelButtonTop" onclick="closeOptions()"></a>
+                <a class="button button-defaults" id="loadDefaultsTop" onclick="loadDefaultOptions()">Load Defaults</a>
+            </div>
+            <div id="main-contents">
+                <table id="options-table">
+                    <tbody>
+                        <tr class="option-row">
+                            <th id="enabled-name"></th>
+                            <td>
+                                <input name="enabled" id="enabled-yes" type="radio" onclick="optionsFormState(true)"/>
+                                    <label id="enabled-yes-label" for="enabled-yes"></label>
+                                    <br>            
+                                <input name="enabled" id="enabled-no" type="radio" onclick="optionsFormState(false)"/>
+                                    <label id="enabled-no-label" for="enabled-no"></label>
+                            </td>
+                        </tr>
+                        <tr class="option-row">
+                            <th id="zoomMode-name"></th>
+                            <td>
+                                <input id="zoomMode-shrinkOnly" type="radio" name="zoomMode"/>
+                                    <label id="zoomMode-shrinkOnly-label" for="zoomMode-shrinkOnly"></label>
+                                    <div id="zoomMode-shrinkOnly-explanation" class="option-explanation-2"></div>
+                                    <br>
+                                        
+                                <input id="zoomMode-growOnly" type="radio" name="zoomMode"/>
+                                    <label id="zoomMode-growOnly-label" for="zoomMode-growOnly"></label>
+                                    <div id="zoomMode-growOnly-explanation" class="option-explanation-2"></div>
+                                    <br>
+                                        
+                                <input id="zoomMode-shrinkAndGrow" type="radio" name="zoomMode"/>
+                                    <label id="zoomMode-shrinkAndGrow-label" for="zoomMode-shrinkAndGrow"></label>
+                                    <div id="zoomMode-shrinkAndGrow-explanation" class="option-explanation-2"></div>
+                            </td>
+                        </tr>
+                        <tr class="option-row">
+                            <th id="maxZoomAllowed-name"></th>
+                            <td>
+                                <input style="width: 50px; text-align:right;" id="maxZoomAllowed" type="text" name="maxZoomAllowed"/>
+                                <span>%</span>
+                                <div id="maxZoomAllowed-percentage-explanation" class="option-explanation-1"></div>
+                            </td>
+                        </tr>
+                        <tr class="option-row">
+                            <th id="errorMargin-name"></th>
+                            <td>
+                                <input style="width: 50px; text-align:right;" id="errorMargin" type="text" name="errorMargin"/>
+                                <span>%</span>
+                                <div id="errorMargin-percentage-explanation" class="option-explanation-1"></div>
+                            </td>
+                        </tr>
+                        <tr class="option-row noborder">
+                            <th id="exceptions-name"></th>
+                            <td>
+                                <textarea id="exceptions-list"></textarea>
+                                <div id="exceptions-list-usage" class="option-explanation-1"></div>
+                                <br>
+                                <div id="exceptions-list-explanation" class="option-explanation-1"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="buttons">
+                <span class="refreshWarning" id="refreshWarningBottom"></span>
+                <a class="button" id="saveButtonBottom" onclick="saveOptions()"></a>               
+                <a class="button" id="cancelButtonBottom" onclick="closeOptions()"></a>
+                <a class="button button-defaults" id="loadDefaultsBottom" onclick="loadDefaultOptions()">Load Defaults</a>
+            </div>
+        </div>
+    </body>
+</html>

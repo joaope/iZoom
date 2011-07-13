@@ -1,13 +1,217 @@
 {
-    "extensionName":
+    
+    // EXTENSION
+
+    "extension_name":
     {
         "message": "iZoom",
         "description": "Extension name."
     },
     
-    "extensionDescription":
+    "extension_description":
     {
         "message": "iZoom takes care of zoom level for you.",
         "description": "Extension description."
+    },
+    
+    // BROWSER ACTIONS
+
+    "browserActions_tooltip":
+    {
+        "message": "iZoom",
+        "description": "Icon tooltip"
+    },
+    
+    "browserActions_offBadge":
+    {
+        "message": "Off",
+        "description": "Short text that appears above extension icon indicating that it is disabled. Four characters long tops."
+    },
+
+    "options_mainTitle":
+    {
+        "message": "iZoom Options",
+        "description": "Title that appears on top of options page and on window title itself"
+    },
+    
+    "options_refreshWarning":
+    {
+        "message": "(currently opened pages must be reloaded for the changes to take effect)",
+        "description": "Warn user that he/she must refresh page after saving options"
+    },
+    
+    "options_saveButton":
+    {
+        "message": "Save Options",
+        "description": "Save button text"
+    },
+    
+    "options_cancelButton":
+    {
+        "message": "Cancel",
+        "description": "Cancel button text"
+    },
+    
+    "options_loadDefaultsButton":
+    {
+        "message": "Load Defaults",
+        "description": "Load defaults button text"
+    },
+    
+    "options_enabled_name": {
+        "message": "Enabled",
+        "description": "Enabled option name"
+    },
+    
+    "options_enabled_yes": {
+        "message": "<b>Yes</b>",
+        "description": "Enabled YES option name"
+    },
+    
+    "options_enabled_no": {
+        "message": "No",
+        "description": "Enabled NO option name"
+    },
+    
+    "options_zoomMode_name": {
+        "message": "Zoom Mode",
+        "description": "Zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkOnly":
+    {
+        "message": "Shrink Only",
+        "description": "Shrink Only zoom mode option name"
+    },
+    
+    "options_zoomMode_growOnly":
+    {
+        "message": "Grow Only",
+        "description": "Grow Only zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkAndGrow":
+    {
+        "message": "Shrink And Grow",
+        "description": "Shrink And Grow zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkOnlyExplanation":
+    {
+        "message": "Zoom is always at 100% unless window width is decreased and the contents are shrinked to fit, avoiding horizontal scrollbar.",
+        "description": "Shrink Only zoom mode option explanation"
+    },
+    
+    "options_zoomMode_growOnlyExplanation":
+    {
+        "message": "Zoom level is never lower than 100% and it only grows for the contents to fit window width.",
+        "description": "Grow Only zoom mode option explanation"
+    },
+    
+    "options_zoomMode_shrinkAndGrowExplanation":
+    {
+        "message": "Contents are shrinked and growed to fit window width.",
+        "description": "Shrink And Grow zoom mode option explanation"
+    },
+    
+    "options_maxZoomAllowed_name": {
+        "message": "Maximum Zoom Allowed",
+        "description": "Maximum Zoom Allowed option name"
+    },
+    
+    "options_maxZoomAllowed_percentageExplanation": {
+        "message": "This value is used by <b>Grow Only</b> and <b>Shrink And Grow</b> modes to calculate the maximum size to which the contents may be enlarged. As a general rule this is the maximum zoom level that the screen supports without showing the horizontal scrollbar. In case horizontal scrollbar is showed, even when window is maximized, decreased this value until it disappears.",
+        "description": "Maximum Zoom Allowed percentage value explanation"
+    },
+    
+    "options_errorMargin_name": {
+        "message": "Error Margin",
+        "description": "Error Margin option name"
+    },
+    
+    "options_errorMargin_percentageExplanation": {
+        "message": "Small percentage value that is substracted to actual zoom level to avoid errors. Some small percentage should be enough.",
+        "description": "Error Margin percentage value explanation"
+    },
+    
+    "options_exceptions_name": {
+        "message": "Exceptions",
+        "description": "Exceptions option name"
+    },
+    
+    "options_exceptions_listUsage": {
+        "message": "<b>One exception per line. Don't use commas</b>.",
+        "description": "Exceptions usage explanation"
+    },
+    
+    "options_exceptions_listExplanation": {
+        "message": "Exempt sites from being resized using this extension. Exceptions are checked using <a href=\"http://www.w3schools.com/jsref/jsref_obj_regexp.asp\" target=\"blank\">JavaScript Regular Expressions</a>. If you're not familiar with them please use Tabs context menus to add exceptions automatically.",
+        "description": "Exceptions explanation"
+    },
+    
+    // POPUP
+    
+    "popup_quickOptions": {
+        "message": "Quick Options",
+        "description": "Quick options title"
+    },
+    
+    "popup_requireReload": {
+        "message": "(require page reload)",
+        "description": "Warns user that he/she should reload page for changes to take effect"
+    },
+
+    "contextMenu_menuItem_exceptionAddCurrentPage": {
+        "message": "Add current page",
+        "description": "Menu item to add a new exception with current page URL"
+    },
+    
+    "contextMenu_menuItem_exceptionAddCurrentHost": {
+        "message": "Add current host",
+        "description": "Menu item to add a new exception with current page URL host"
+    },
+
+    "message_confirm_addURLToExceptionsList": {
+        "message": "Adding this URL to exceptions list:\n\n'$url$'\n\nAre you sure?",
+        "description": "Confirmation message showed before adding URL to exceptions list",
+        "placeholders": {
+            "url": {
+                "content": "$1",
+                "example": "http://digg.com/news/science"
+            }
+        }
+    },
+    
+    "message_confirm_addHostToExceptionsList": {
+        "message": "Adding this host to exceptions list:\n\n'$host$'\n\nAre you sure?",
+        "description": "Confirmation message showed before adding host to exceptions list",
+        "placeholders": {
+            "host": {
+                "content": "$1",
+                "example": "http://digg.com"
+            }
+        }
+    },
+    
+    "message_alert_urlAlreadyOnExceptionsList": {
+        "message": "This URL is already covered on exceptions list.",
+        "description": "Informs user that the URL exception to be added is already covered on exceptions list",
+        "placeholders": {
+            "url": {
+                "content": "$1",
+                "example": "http://digg.com/news/science"
+            }
+        }
+    },
+    
+    "message_alert_hostAlreadyOnExceptionsList": {
+        "message": "This host is already covered on exceptions list.",
+        "description": "Informs user that the host exception to be added is already covered on exceptions list",
+        "placeholders": {
+            "host": {
+                "content": "$1",
+                "example": "http://digg.com"
+            }
+        }
     }
 }
