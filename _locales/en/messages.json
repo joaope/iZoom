@@ -1,7 +1,4 @@
-{
-    
-    // EXTENSION
-
+﻿{
     "extension_name":
     {
         "message": "iZoom",
@@ -10,12 +7,10 @@
     
     "extension_description":
     {
-        "message": "iZoom takes care of zoom level for you.",
+        "message": "Automatically changes zoom level to fit window width. With three different zooming modes.",
         "description": "Extension description."
     },
     
-    // BROWSER ACTIONS
-
     "browserActions_tooltip":
     {
         "message": "iZoom",
@@ -148,9 +143,7 @@
         "message": "Exempt sites from being resized using this extension. Exceptions are checked using <a href=\"http://www.w3schools.com/jsref/jsref_obj_regexp.asp\" target=\"blank\">JavaScript Regular Expressions</a>. If you're not familiar with them please use Tabs context menus to add exceptions automatically.",
         "description": "Exceptions explanation"
     },
-    
-    // POPUP
-    
+
     "popup_quickOptions": {
         "message": "Quick Options",
         "description": "Quick options title"
