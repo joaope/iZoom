@@ -94,9 +94,11 @@ function initOptions()
     $('saveButtonTop').innerHTML = i18n('options_saveButton');
     $('cancelButtonTop').innerHTML = i18n('options_cancelButton');
     $('refreshWarningTop').innerHTML = i18n('options_refreshWarning');
+    $('loadDefaultsTop').innerHTML = i18n('options_loadDefaultsButton');
     $('saveButtonBottom').innerHTML = i18n('options_saveButton');
     $('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
     $('refreshWarningBottom').innerHTML = i18n('options_refreshWarning');
+    $('loadDefaultsBottom').innerHTML = i18n('options_loadDefaultsButton');
     
     $('enabled-name').innerHTML = i18n('options_enabled_name');
     $('enabled-yes-label').innerHTML = i18n('options_enabled_yes');

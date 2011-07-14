@@ -1,0 +1,210 @@
+﻿{
+    "extension_name":
+    {
+        "message": "iZoom",
+        "description": "Extension name."
+    },
+    
+    "extension_description":
+    {
+        "message": "Ajusta, automaticamente, o nível de zoom para que os conteúdos se ajustem à largura do browser. Com três modos de zoom diferentes.",
+        "description": "Extension description."
+    },
+    
+    "browserActions_tooltip":
+    {
+        "message": "iZoom",
+        "description": "Icon tooltip"
+    },
+    
+    "browserActions_offBadge":
+    {
+        "message": "Off",
+        "description": "Short text that appears above extension icon indicating that it is disabled. Four characters long tops."
+    },
+
+    "options_mainTitle":
+    {
+        "message": "iZoom - Opções",
+        "description": "Title that appears on top of options page and on window title itself"
+    },
+    
+    "options_refreshWarning":
+    {
+        "message": "(páginas actualmente abertas deverão ser recarregadas para que as alterações surtam efeito)",
+        "description": "Warn user that he/she must refresh page after saving options"
+    },
+    
+    "options_saveButton":
+    {
+        "message": "Guardar Opções",
+        "description": "Save button text"
+    },
+    
+    "options_cancelButton":
+    {
+        "message": "Cancelar",
+        "description": "Cancel button text"
+    },
+    
+    "options_loadDefaultsButton":
+    {
+        "message": "Valores por Defeito",
+        "description": "Load defaults button text"
+    },
+    
+    "options_enabled_name": {
+        "message": "Activado",
+        "description": "Enabled option name"
+    },
+    
+    "options_enabled_yes": {
+        "message": "<b>Sim</b>",
+        "description": "Enabled YES option name"
+    },
+    
+    "options_enabled_no": {
+        "message": "Não",
+        "description": "Enabled NO option name"
+    },
+    
+    "options_zoomMode_name": {
+        "message": "Modos de Zoom",
+        "description": "Zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkOnly":
+    {
+        "message": "Encolher Apenas",
+        "description": "Shrink Only zoom mode option name"
+    },
+    
+    "options_zoomMode_growOnly":
+    {
+        "message": "Ampliar Apenas",
+        "description": "Grow Only zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkAndGrow":
+    {
+        "message": "Encolher e Ampliar",
+        "description": "Shrink And Grow zoom mode option name"
+    },
+    
+    "options_zoomMode_shrinkOnlyExplanation":
+    {
+        "message": "Nível de zoom mantem-se em 100% e os conteúdos são encolhidos apenas quando o tamanho da janela diminui, evitando que a barra de scroll horizontal seja visualizada.",
+        "description": "Shrink Only zoom mode option explanation"
+    },
+    
+    "options_zoomMode_growOnlyExplanation":
+    {
+        "message": "Nível de zoom nunca é inferior a 100% e os conteúdos são ampliados, unicamente, para se ajustarem à largura da janela do browser.",
+        "description": "Grow Only zoom mode option explanation"
+    },
+    
+    "options_zoomMode_shrinkAndGrowExplanation":
+    {
+        "message": "Conteúdos são encolhidos e ampliados para se ajustarem à largura da janela do browser.",
+        "description": "Shrink And Grow zoom mode option explanation"
+    },
+    
+    "options_maxZoomAllowed_name": {
+        "message": "Nível de Zoom Máximo",
+        "description": "Maximum Zoom Allowed option name"
+    },
+    
+    "options_maxZoomAllowed_percentageExplanation": {
+        "message": "Este valor é usado pelos modos <b>Ampliar Apenas</b> e <b>Encolher e Ampliar</b> para calcular o tamanho máximo até ao qual os conteúdos podem ser ampliados. Regra geral este valor é o nível de zoom suportado pelo ecrã sem que a janela mostre a barra de scroll horizontal. No caso desta barra ser visualizada, mesmo quando a janela está maximizada, diminua este valor até ela desaparecer.",
+        "description": "Maximum Zoom Allowed percentage value explanation"
+    },
+    
+    "options_errorMargin_name": {
+        "message": "Margem de erro",
+        "description": "Error Margin option name"
+    },
+    
+    "options_errorMargin_percentageExplanation": {
+        "message": "Percentagem subtraída ao valor de zoom a quando do ajustamente, para evitar que algum conteúdo seja escondido em determinadas páginas. Qualquer pequeno valor deverá ser suficiente.",
+        "description": "Error Margin percentage value explanation"
+    },
+    
+    "options_exceptions_name": {
+        "message": "Excepções",
+        "description": "Exceptions option name"
+    },
+    
+    "options_exceptions_listUsage": {
+        "message": "<b>Uma excepção por linha. Não usar vírgulas.</b>",
+        "description": "Exceptions usage explanation"
+    },
+    
+    "options_exceptions_listExplanation": {
+        "message": "Evita que determinadas páginas sejam ajustadas usando esta extensão. Excepções são verificadas usando <a href=\"http://www.w3schools.com/jsref/jsref_obj_regexp.asp\" target=\"blank\">Expressões Regulares JavaScript</a>. Se não está familiarizado com a sua utilização, por favor, utilize o menu de contexto em cada página para adicionar excepções automaticamente.",
+        "description": "Exceptions explanation"
+    },
+
+    "popup_quickOptions": {
+        "message": "Opções Rápidas",
+        "description": "Quick options title"
+    },
+    
+    "popup_requireReload": {
+        "message": "(requer recarregamento das páginas abertas)",
+        "description": "Warns user that he/she should reload page for changes to take effect"
+    },
+
+    "contextMenu_menuItem_exceptionAddCurrentPage": {
+        "message": "Adicionar página actual",
+        "description": "Menu item to add a new exception with current page URL"
+    },
+    
+    "contextMenu_menuItem_exceptionAddCurrentHost": {
+        "message": "Adicionar host actual",
+        "description": "Menu item to add a new exception with current page URL host"
+    },
+
+    "message_confirm_addURLToExceptionsList": {
+        "message": "Adicionar este endereço à lista de excepções:\n\n'$url$'\n\nTem a certeza?",
+        "description": "Confirmation message showed before adding URL to exceptions list",
+        "placeholders": {
+            "url": {
+                "content": "$1",
+                "example": "http://digg.com/news/science"
+            }
+        }
+    },
+    
+    "message_confirm_addHostToExceptionsList": {
+        "message": "Adicionar todos os endereços deste host à lista de excepções:\n\n'$host$'\n\nTem a certeza?",
+        "description": "Confirmation message showed before adding host to exceptions list",
+        "placeholders": {
+            "host": {
+                "content": "$1",
+                "example": "http://digg.com"
+            }
+        }
+    },
+    
+    "message_alert_urlAlreadyOnExceptionsList": {
+        "message": "Este endereço já é abrangido pela lista de excepções.",
+        "description": "Informs user that the URL exception to be added is already covered on exceptions list",
+        "placeholders": {
+            "url": {
+                "content": "$1",
+                "example": "http://digg.com/news/science"
+            }
+        }
+    },
+    
+    "message_alert_hostAlreadyOnExceptionsList": {
+        "message": "Este host já é abrangido pela lista de excepções.",
+        "description": "Informs user that the host exception to be added is already covered on exceptions list",
+        "placeholders": {
+            "host": {
+                "content": "$1",
+                "example": "http://digg.com"
+            }
+        }
+    }
+}
