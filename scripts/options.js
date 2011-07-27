@@ -1,197 +1,204 @@
-var zoomModes =
+var zoomModes = 
 {
     ShrinkOnly: 0,
     GrowOnly: 1,
     ShrinkAndGrow: 2
 }
 
-defaultOptions =
+var options = (function()
 {
-    enabled: true,
-    zoomMode: zoomModes.ShrinkOnly,
-    // Calculate default MaxZoomAllowed value based on this
-    // assumptions, founded after a few tests:
-    //
-    // Resolution Width  ->   Maximum Zoom Allowed
-    //       1600                     150
-    //       1280                     120
-    //
-    // m = 3/32
-    //
-    // y = 3/32x
-    maximumZoomAllowed: Math.floor(3 / 32 * screen.width),
-    errorMargin: 2,
-    exceptions: new Array(
-        "http[s]?://[a-zA-Z0-9_-]*.google.com(/*)"
-    )
-}
-
-function setOption(optionName, value)
-{
-    localStorage['option-' + optionName.toLowerCase()] = value;
-
-    if (optionName.toLowerCase() == 'enabled')
-    {
-        setBadge();
-    }
-}
-
-function getOption(optionName)
-{
-    optionName = optionName.toLowerCase();
-    var option = localStorage["option-" + optionName];
+    // Private variables
+    var _localStoragePrefix = 'option-';
     
-    switch(optionName)
+    // Private methods  
+    function fullOptionName(optionName)
     {
-        case "enabled":
+        return _localStoragePrefix + optionName.toLowerCase();
+    }
+    
+    // Public interface
+    return {
+        
+        getDefaults: function()
         {
-            option = (option != "false" ? true : false);
-            return option;
-        }
-        case "zoommode":
+            return {
+                enabled: true,
+                zoomMode: zoomModes.ShrinkOnly,
+                // Calculate default MaxZoomAllowed value based on this
+                // assumptions, founded after a few tests:
+                //
+                // Resolution Width  ->   Maximum Zoom Allowed
+                //       1600                     150
+                //       1280                     120
+                //
+                // m = 3/32
+                //
+                // y = 3/32x
+                maximumZoomAllowed: Math.floor(3 / 32 * screen.width),
+                errorMargin: 2,
+                exceptions: new Array('http[s]?://[a-zA-Z0-9_-]*.google.com(/*)')             
+            };
+        },
+        
+        setOption: function(optionName, value)
         {
-            option = parseInt(option);
+            localStorage[fullOptionName(optionName)] = value;
             
-            if (option >= 0 && option <= 2)
+            if (optionName.toLowerCase() == 'enabled')
             {
-                return (option == 0 ? zoomModes.ShrinkOnly : (option == 1 ? zoomModes.GrowOnly : zoomModes.ShrinkAndGrow));
+                setEnabledBadge();
             }
-            return defaultOptions.zoomMode;
-        }
+        },
         
-        case "maximumzoomallowed":
+        getOption: function(optionName)
         {
-            option = parseInt(option);
-            return (option > 0 ? option : defaultOptions.maximumZoomAllowed);
-        }
+            optionName = optionName.toLowerCase();
+            var option = localStorage[fullOptionName(optionName)];
+            
+            switch(optionName)
+            {
+                case 'enabled':
+                {
+                    option = (option != 'false' ? true : false);
+                    return option;
+                }
+                
+                case 'zoommode':
+                {
+                    option = parseInt(option);
+                    
+                    if (!isNaN(option) && option >= 0 && option <= 2)
+                    {
+                        return (option == 0 ? zoomModes.ShrinkOnly : (option == 1 ? zoomModes.GrowOnly : zoomModes.ShrinkAndGrow));
+                    }
+                    return options.getDefaults().zoomMode;
+                }
+                
+                case 'maximumzoomallowed':
+                {
+                    option = parseInt(option);
+                    return (!isNaN(option) && option > 0 ? option : options.getDefaults().maximumZoomAllowed);
+                }
+                
+                case 'errormargin':
+                {
+                    option = parseInt(option);
+                    return (!isNaN(option) && option >= 0 ? option : options.getDefaults().errorMargin);    
+                }
+                
+                case 'exceptions':
+                {
+                    var exceptions = (option != undefined && option.length > 0 ? option.split(',') : new Array());
+                    return (option == undefined ? options.getDefaults().exceptions : exceptions);
+                }
+                
+                default:
+                {
+                    throw new Error('getOption: invalid option');
+                }
+            }
+        },
         
-        case "errormargin":
+        addException: function(exception)
         {
-            option = parseInt(option);
-            return (option >= 0 ? option : defaultOptions.errorMargin);    
-        }
+            var exceptions = this.getOption('Exceptions');
+    
+            if (!this.isException(exception))
+            {
+                exceptions.push(exception);
+                this.setOption('Exceptions', exceptions.toString());
+                return true;
+            }
+            return false;
+        },
         
-        case "exceptions":
+        isException: function(url)
         {
-            var exceptions = (option != undefined && option.length > 0 ? option.split(',') : new Array());
-            return (option == undefined ? defaultOptions.exceptions : exceptions);
-        }
-        
-        default:
-        {
-            throw "getOption: invalid option";
+            if (url != undefined || url instanceof String)
+            {
+                var exceptions = this.getOption('Exceptions');
+                
+                for (i = 0; i < exceptions.length; i++)
+                {
+                    var regExp = new RegExp(exceptions[i]);
+                    
+                    if (regExp.test(url))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
-}
-
-function initOptions()
-{
-    // Do translation
-    document.title = i18n('options_mainTitle');
-    
-    $('main-title').innerHTML = i18n('options_mainTitle');
-    
-    $('saveButtonTop').innerHTML = i18n('options_saveButton');
-    $('cancelButtonTop').innerHTML = i18n('options_cancelButton');
-    $('refreshWarningTop').innerHTML = i18n('options_refreshWarning');
-    $('loadDefaultsTop').innerHTML = i18n('options_loadDefaultsButton');
-    $('saveButtonBottom').innerHTML = i18n('options_saveButton');
-    $('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
-    $('refreshWarningBottom').innerHTML = i18n('options_refreshWarning');
-    $('loadDefaultsBottom').innerHTML = i18n('options_loadDefaultsButton');
-    
-    $('enabled-name').innerHTML = i18n('options_enabled_name');
-    $('enabled-yes-label').innerHTML = i18n('options_enabled_yes');
-    $('enabled-no-label').innerHTML = i18n('options_enabled_no');
-    
-    $('zoomMode-name').innerHTML = i18n('options_zoomMode_name');
-    $('zoomMode-shrinkOnly-label').innerHTML = i18n('options_zoomMode_shrinkOnly');
-    $('zoomMode-growOnly-label').innerHTML = i18n('options_zoomMode_growOnly');
-    $('zoomMode-shrinkAndGrow-label').innerHTML = i18n('options_zoomMode_shrinkAndGrow');
-    $('zoomMode-shrinkOnly-explanation').innerHTML = i18n('options_zoomMode_shrinkOnlyExplanation');
-    $('zoomMode-growOnly-explanation').innerHTML = i18n('options_zoomMode_growOnlyExplanation');
-    $('zoomMode-shrinkAndGrow-explanation').innerHTML = i18n('options_zoomMode_shrinkAndGrowExplanation');
-    
-    $('maxZoomAllowed-name').innerHTML = i18n('options_maxZoomAllowed_name');
-    $('maxZoomAllowed-percentage-explanation').innerHTML = i18n('options_maxZoomAllowed_percentageExplanation');
-    
-    $('errorMargin-name').innerHTML = i18n('options_errorMargin_name');
-    $('errorMargin-percentage-explanation').innerHTML = i18n('options_errorMargin_percentageExplanation');
-    
-    $('exceptions-name').innerHTML = i18n('options_exceptions_name');
-    $('exceptions-list-explanation').innerHTML = i18n('options_exceptions_listExplanation');
-    $('exceptions-list-usage').innerHTML = i18n('options_exceptions_listUsage');
-    
-    // Load options values
-    loadOptions();
-}
+})();
 
 function loadOptions()
 {
     // Enabled
-    var enabled = getOption('Enabled');
+    var enabled = options.getOption('Enabled');
     
     if (enabled)
     {
-        $('enabled-yes').checked = true;
+        $_('enabled-yes').checked = true;
         optionsFormState(true);
     }
     else
     {
-        $('enabled-no').checked = true;
+        $_('enabled-no').checked = true;
         optionsFormState(false);
     }
     
     // Zoom Mode
-    var zoomMode = getOption("ZoomMode");
+    var zoomMode = options.getOption('ZoomMode');
     
     if (zoomMode == zoomModes.ShrinkOnly)
     {
-        $('zoomMode-shrinkOnly').checked = true;
+        $_('zoomMode-shrinkOnly').checked = true;
     }
     else if (zoomMode == zoomModes.GrowOnly)
     {
-        $('zoomMode-growOnly').checked = true;
+        $_('zoomMode-growOnly').checked = true;
     }
     else
     {
-        $('zoomMode-shrinkAndGrow').checked = true;
+        $_('zoomMode-shrinkAndGrow').checked = true;
     }
     
     // Maximum Zoom Allowed
-    $('maxZoomAllowed').value = getOption("MaximumZoomAllowed");
+    $_('maxZoomAllowed').value = options.getOption("MaximumZoomAllowed");
     
     // Error Margin
-    $('errorMargin').value = getOption("ErrorMargin");
+    $_('errorMargin').value = options.getOption("ErrorMargin");
     
     // Exceptions
-    var exceptions = getOption('exceptions');
+    var exceptions = options.getOption('exceptions');
     
     for (i = 0; i < exceptions.length; i++)
     {
-        $('exceptions-list').value = $('exceptions-list').value + (i != 0 ? '\n' : '') + exceptions[i];   
+        $_('exceptions-list').value = $_('exceptions-list').value + (i != 0 ? '\n' : '') + exceptions[i];   
     }
 }
 
 function saveOptions()
 {
     // Enabled
-    var enabled = ($('enabled-yes').checked ? "true" : "false");
-    setOption('Enabled', enabled);
+    var enabled = ($_('enabled-yes').checked ? "true" : "false");
+    options.setOption('Enabled', enabled);
     
     // Zoom Mode
-    var mode = ($('zoomMode-shrinkOnly').checked ? 0 : ($('zoomMode-growOnly').checked ? 1 : 2));
-    setOption('ZoomMode', mode);
+    var mode = ($_('zoomMode-shrinkOnly').checked ? 0 : ($_('zoomMode-growOnly').checked ? 1 : 2));
+    options.setOption('ZoomMode', mode);
     
     // Maximum Zoom Allowed
-    setOption('MaximumZoomAllowed', $('maxZoomAllowed').value);
+    options.setOption('MaximumZoomAllowed', $_('maxZoomAllowed').value);
     
     // Error Margin
-    setOption('ErrorMargin', $('errorMargin').value);
+    options.setOption('ErrorMargin', $_('errorMargin').value);
     
     // Exceptiopns
-    var exceptions = $('exceptions-list').value.split(/\n/g).join(',');
-    setOption('exceptions', exceptions);
+    var exceptions = $_('exceptions-list').value.split(/\n/g).join(',');
+    options.setOption('exceptions', exceptions);
     
     // Update context menu with new values
     chrome.extension.sendRequest({type: "updateContextMenu"}, function(response) {});
@@ -200,95 +207,107 @@ function saveOptions()
     closeOptions();
 }
 
-function addException(exception)
-{
-    var exceptions = getOption('Exceptions');
-    
-    if (!isException(exception))
-    {
-        exceptions.push(exception);
-        setOption('Exceptions', exceptions.toString());
-        return true;
-    }
-    return false;
-}
-
-function isException(url)
-{
-    if (url != undefined || url instanceof String)
-    {
-        var exceptions = getOption('Exceptions');
-        
-        for (i = 0; i < exceptions.length; i++)
-        {
-            var regExp = new RegExp(exceptions[i]);
-            
-            if (regExp.test(url))
-            {
-                return true;
-            }
-        }
-    }
-    return false;
-}
-
-function optionsFormState(enabled)
-{
-    $('zoomMode-shrinkOnly').disabled =
-        $('zoomMode-growOnly').disabled =
-        $('zoomMode-shrinkAndGrow').disabled =
-        $('maxZoomAllowed').disabled =
-        $('errorMargin').disabled =
-        $('exceptions-list').disabled = !enabled;
-}
-
-function loadDefaultOptions()
-{
-    $('zoomMode-shrinkOnly').checked =
-        $('zoomMode-growOnly').checked =
-        $('zoomMode-shrinkAndGrow').checked = false;
-        
-    $('exceptions-list').value = "";
-    
-    // Zoom Mode
-    var zoomMode = defaultOptions.zoomMode;
-    
-    if (zoomMode == zoomModes.ShrinkOnly)
-    {
-        $('zoomMode-shrinkOnly').checked = true;
-    }
-    else if (zoomMode == zoomModes.GrowOnly)
-    {
-        $('zoomMode-growOnly').checked = true;
-    }
-    else
-    {
-        $('zoomMode-shrinkAndGrow').checked = true;
-    }
-    
-    // Maximum Zoom Allowed
-    $('maxZoomAllowed').value = defaultOptions.maximumZoomAllowed;
-    
-    // Error Margin
-    $('errorMargin').value = defaultOptions.errorMargin;
-    
-    // Exceptions
-    var exceptions = defaultOptions.exceptions;
-    
-    for (i = 0; i < exceptions.length; i++)
-    {
-        $('exceptions-list').value = $('exceptions-list').value + (i != 0 ? '\n' : '') + exceptions[i];   
-    }
-}
-
-function setBadge()
-{
-    var badgeText = (!getOption('Enabled') ? i18n('browserActions_offBadge') : "");
-    chrome.browserAction.setBadgeText({text: badgeText});   
-}
-
 function closeOptions()
 {
     window.close();
 }
 
+function loadDefaultOptions()
+{
+    var defaults = options.getDefaults();
+    
+    $_('zoomMode-shrinkOnly').checked =
+        $_('zoomMode-growOnly').checked =
+        $_('zoomMode-shrinkAndGrow').checked = false;
+        
+    $_('exceptions-list').value = "";
+    
+    // Zoom Mode
+    var zoomMode = defaults.zoomMode;
+    
+    if (zoomMode == zoomModes.ShrinkOnly)
+    {
+        $_('zoomMode-shrinkOnly').checked = true;
+    }
+    else if (zoomMode == zoomModes.GrowOnly)
+    {
+        $_('zoomMode-growOnly').checked = true;
+    }
+    else
+    {
+        $_('zoomMode-shrinkAndGrow').checked = true;
+    }
+    
+    // Maximum Zoom Allowed
+    $_('maxZoomAllowed').value = defaults.maximumZoomAllowed;
+    
+    // Error Margin
+    $_('errorMargin').value = defaults.errorMargin.toString();
+    
+    // Exceptions
+    var exceptions = defaults.exceptions;
+    
+    for (i = 0; i < exceptions.length; i++)
+    {
+        $_('exceptions-list').value = $_('exceptions-list').value + (i != 0 ? '\n' : '') + exceptions[i];   
+    }
+}
+
+function setEnabledBadge()
+{
+    var badgeText = (!options.getOption('Enabled') ? i18n('browserActions_offBadge') : "");
+    chrome.browserAction.setBadgeText({text: badgeText});   
+}
+
+function initOptions()
+{
+    // Do translation
+    document.title = i18n('options_mainTitle');
+    
+    $_('main-title-name').innerHTML = i18n('options_mainTitle');
+    $_('main-title-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.app.getDetails().version + ')';
+    
+    $_('saveButtonTop').innerHTML = i18n('options_saveButton');
+    $_('cancelButtonTop').innerHTML = i18n('options_cancelButton');
+    $_('refreshWarningTop').innerHTML = i18n('options_refreshWarning');
+    $_('loadDefaultsTop').innerHTML = i18n('options_loadDefaultsButton');
+    $_('saveButtonBottom').innerHTML = i18n('options_saveButton');
+    $_('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
+    $_('refreshWarningBottom').innerHTML = i18n('options_refreshWarning');
+    $_('loadDefaultsBottom').innerHTML = i18n('options_loadDefaultsButton');
+    
+    $_('enabled-name').innerHTML = i18n('options_enabled_name');
+    $_('enabled-yes-label').innerHTML = i18n('options_enabled_yes');
+    $_('enabled-no-label').innerHTML = i18n('options_enabled_no');
+    
+    $_('zoomMode-name').innerHTML = i18n('options_zoomMode_name');
+    $_('zoomMode-shrinkOnly-label').innerHTML = i18n('options_zoomMode_shrinkOnly');
+    $_('zoomMode-growOnly-label').innerHTML = i18n('options_zoomMode_growOnly');
+    $_('zoomMode-shrinkAndGrow-label').innerHTML = i18n('options_zoomMode_shrinkAndGrow');
+    $_('zoomMode-shrinkOnly-explanation').innerHTML = i18n('options_zoomMode_shrinkOnlyExplanation');
+    $_('zoomMode-growOnly-explanation').innerHTML = i18n('options_zoomMode_growOnlyExplanation');
+    $_('zoomMode-shrinkAndGrow-explanation').innerHTML = i18n('options_zoomMode_shrinkAndGrowExplanation');
+    
+    $_('maxZoomAllowed-name').innerHTML = i18n('options_maxZoomAllowed_name');
+    $_('maxZoomAllowed-percentage-explanation').innerHTML = i18n('options_maxZoomAllowed_percentageExplanation');
+    
+    $_('errorMargin-name').innerHTML = i18n('options_errorMargin_name');
+    $_('errorMargin-percentage-explanation').innerHTML = i18n('options_errorMargin_percentageExplanation');
+    
+    $_('exceptions-name').innerHTML = i18n('options_exceptions_name');
+    $_('exceptions-list-explanation').innerHTML = i18n('options_exceptions_listExplanation');
+    $_('exceptions-list-usage').innerHTML = i18n('options_exceptions_listUsage');
+    
+    // Load options values
+    loadOptions();
+}
+
+function optionsFormState(enabled)
+{
+    $_('zoomMode-shrinkOnly').disabled =
+        $_('zoomMode-growOnly').disabled =
+        $_('zoomMode-shrinkAndGrow').disabled =
+        $_('maxZoomAllowed').disabled =
+        $_('errorMargin').disabled =
+        $_('exceptions-list').disabled = !enabled;
+}

@@ -38,6 +38,19 @@ a:hover {
     font-size: 25px;
     font-weight: bold;
     border-radius: 5px;
+    height: 30px;
+}
+
+#main-title-name {
+    float: left;
+}
+
+#main-title-version {
+    font-style: italic;
+    float: right;
+    font-size: 11px;
+    line-height: 30px;
+    vertical-align: middle;
 }
 
 .buttons {
@@ -107,7 +120,7 @@ a:hover {
 
 #options-table .option-row {
     border-bottom: 1px solid #B9C4DA;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
     vertical-align: top;
 }
 

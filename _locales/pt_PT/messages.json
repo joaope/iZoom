@@ -29,6 +29,12 @@
         "description": "Title that appears on top of options page and on window title itself"
     },
     
+    "options_version":
+    {
+        "message": "versão",
+        "description": "Text to indicate version number"
+    },
+    
     "options_refreshWarning":
     {
         "message": "(páginas actualmente abertas deverão ser recarregadas para que as alterações surtam efeito)",
@@ -152,6 +158,11 @@
     "popup_requireReload": {
         "message": "(requer recarregamento das páginas abertas)",
         "description": "Warns user that he/she should reload page for changes to take effect"
+    },
+    
+    "popup_advancedOptions": {
+        "message": "Opções Avançadas...",
+        "description": "Button to open options page through popup"
     },
 
     "contextMenu_menuItem_exceptionAddCurrentPage": {

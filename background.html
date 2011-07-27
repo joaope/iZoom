@@ -4,21 +4,21 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/options.js"></script>
         <script>
-            
+
             // Badge
-            setBadge();
+            setEnabledBadge();
         
             // Context menu items callbaks
             function onEnabledItemClick(info, tab)
             {
-                setOption('Enabled', info.checked);
+                options.setOption('Enabled', info.checked);
             }
             
             function onShrinkOnlyItemClick(info, tab)
             {
                 if (info.checked)
                 {
-                    setOption('ZoomMode', zoomModes.ShrinkOnly);
+                    options.setOption('ZoomMode', zoomModes.ShrinkOnly);
                 }
             }
             
@@ -26,7 +26,7 @@
             {
                 if (info.checked)
                 {
-                    setOption('ZoomMode', zoomModes.GrowOnly);
+                    options.setOption('ZoomMode', zoomModes.GrowOnly);
                 }
             }
             
@@ -34,7 +34,7 @@
             {
                 if (info.checked)
                 {
-                    setOption('ZoomMode', zoomModes.ShrinkAndGrow);
+                    options.setOption('ZoomMode', zoomModes.ShrinkAndGrow);
                 }
             }
             
@@ -43,11 +43,11 @@
                 chrome.contextMenus.update(
                     enabledItem,
                     {
-                        'checked': getOption('Enabled')
+                        'checked': options.getOption('Enabled')
                     }
                 );
                 
-                var zoomMode = getOption('ZoomMode');
+                var zoomMode = options.getOption('ZoomMode');
                 
                 chrome.contextMenus.update(
                     shrinkOnlyItem,
@@ -78,7 +78,7 @@
                 
                 if (confirm(confText))
                 {
-                    if (!addException(url))
+                    if (!options.addException(url))
                     {
                         alert(i18n('message_alert_urlAlreadyOnExceptionsList', url));
                     }
@@ -99,14 +99,13 @@
                 
                 if (confirm(confText))
                 {
-                    if (!addException(exception))
+                    if (!options.addException(exception))
                     {
                         alert(i18n('message_alert_hostAlreadyOnExceptionsList', exception));
                     }
                 }
             }
-            
-        
+             
             // Build context menus
             parentMenu = null;
     
@@ -120,7 +119,7 @@
             growOnlyItem = null;
             shrinkAndGrowItem = null;
             
-            var zoomMode = getOption('ZoomMode');
+            var zoomMode = options.getOption('ZoomMode');
             
             parentMenu = chrome.contextMenus.create({
                 "type": 'normal',
@@ -199,11 +198,11 @@
                         var location = request.location;
                         
                         // Options
-                        var enabled = getOption('Enabled');
-                        var zoomMode = getOption('ZoomMode');
-                        var maximumZoomAllowed = getOption('MaximumZoomAllowed');
-                        var errorMargin = getOption('ErrorMargin');
-                        var locationIsException = isException(location);
+                        var enabled = options.getOption('Enabled');
+                        var zoomMode = options.getOption('ZoomMode');
+                        var maximumZoomAllowed = options.getOption('MaximumZoomAllowed');
+                        var errorMargin = options.getOption('ErrorMargin');
+                        var locationIsException = options.isException(location);
 
                         
                         // Send response

@@ -1,8 +1,8 @@
 /************* OPTIONS *****************/
-zoomIsFunctional = (defaultOptions.enabled && !isException(window.location.toString()) ? true : false);
-zoomMode = defaultOptions.zoomMode;
-zoomMaximumAllow = defaultOptions.maximumZoomAllowed;
-zoomErrorMargin = defaultOptions.errorMargin;
+zoomIsFunctional = (options.getDefaults().enabled && !options.isException(window.location.toString()) ? true : false);
+zoomMode = options.getDefaults().zoomMode;
+zoomMaximumAllow = options.getDefaults().maximumZoomAllowed;
+zoomErrorMargin = options.getDefaults().errorMargin;
 
 function fillOptions(optionName)
 {
@@ -35,7 +35,7 @@ function zoom()
 	{
 	    zoomIsFunctional = false;
 	    document.body.style.zoom = ((clientWidth * 100 / scrollWidth) - zoomErrorMargin) + "%";
-	    setTimeout(turnZoomOn, 20);
+	    setTimeout(turnZoomOn, 10);
 	}
 	else
 	{

@@ -1,4 +1,4 @@
-function $(elementId)
+function $_(elementId)
 {
     return document.getElementById(elementId);
 }
