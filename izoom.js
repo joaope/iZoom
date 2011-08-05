@@ -38,8 +38,7 @@ function zoom()
 	return;
     }
     
-    if (!zoomIsFunctional ||
-	window.outerWidth < 1) 
+    if (!zoomIsFunctional || window.outerWidth < 1) 
     {
 	return;
     }
@@ -52,8 +51,7 @@ function zoom()
     {
 	zoom = 100;
     }
-    
-    zoomIsFunctional = false;
+
     document.body.parentElement.style.zoom = zoom + "%";
 
     if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
@@ -61,12 +59,6 @@ function zoom()
 	var styleElem = document.head.insertBefore(document.createElement('style'));
 	styleElem.innerText = "img, object, embed { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
     }
-    
-    setTimeout(turnZoomOn, 10);
-}
-
-function turnZoomOn() {
-    zoomIsFunctional = true;
 }
 
 window.onresize = function()
