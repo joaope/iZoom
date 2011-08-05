@@ -195,25 +195,17 @@
                     }
                     else if (request.type == "options")
                     {
-                        var location = request.location;
-                        
-                        // Options
-                        var enabled = options.getOption('Enabled');
-                        var zoomMode = options.getOption('ZoomMode');
-                        var maximumZoomAllowed = options.getOption('MaximumZoomAllowed');
-                        var errorMargin = options.getOption('ErrorMargin');
-                        var locationIsException = options.isException(location);
-
-                        
                         // Send response
                         sendResponse
                         ({
-                            enabled: enabled,
-                            zoomMode: zoomMode,
-                            maximumZoomAllowed: maximumZoomAllowed,
-                            errorMargin: errorMargin,
-                            isException: locationIsException,
-                            location: location // just giving it back. not needed on the other side
+                            enabled: options.getOption('Enabled'),
+                            zoomMode: options.getOption('ZoomMode'),
+                            maximumZoomAllowed: options.getOption('MaximumZoomAllowed'),
+                            errorMargin: options.getOption('ErrorMargin'),
+                            isException: options.isException(request.location),
+                            exemptImagesZoomIn: options.getOption('ExemptImagesZoomIn'),
+                            exemptObjectsZoomIn: options.getOption('ExemptObjectsZoomIn'),
+                            exemptAppletsZoomIn: options.getOption('ExemptAppletsZoomIn')
                         });
                     }
                 });

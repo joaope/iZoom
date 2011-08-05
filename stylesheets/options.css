@@ -10,8 +10,12 @@ body {
     margin: 0 !important;
 }
 
-input {
-    margin: 0 2px 8px 0;
+input[type='checkbox'],
+input[type='radio'],
+label {
+    margin: 0 0px 0px 0;
+    line-height: 18px;
+    vertical-align: middle;
 }
 
 textarea {
@@ -139,11 +143,13 @@ a:hover {
 }
 
 #options-table .option-row td .option-explanation-1 {
+    margin-top: 6px;
     color: #7B7B91;
     font-size: 11px;
 }
 
-#options-table .option-row td .option-explanation-2{
+#options-table .option-row td .option-explanation-2 {
+    margin-top: 6px;
     color: #7B7B91;
     margin-left: 20px;
     font-size: 11px;

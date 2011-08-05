@@ -3,6 +3,7 @@ zoomIsFunctional = (options.getDefaults().enabled && !options.isException(window
 zoomMode = options.getDefaults().zoomMode;
 zoomMaximumAllow = options.getDefaults().maximumZoomAllowed;
 zoomErrorMargin = options.getDefaults().errorMargin;
+zoomExemptedElementsZoomInCSSselectors = null;
 
 function fillOptions(optionName)
 {
@@ -11,6 +12,19 @@ function fillOptions(optionName)
 	zoomErrorMargin = response.errorMargin;
 	zoomMaximumAllow = response.maximumZoomAllowed;
 	zoomIsFunctional = (response.enabled && !response.isException ? true : false);
+	
+	if (response.exemptImagesZoomIn)
+	{
+	    zoomExemptedElementsZoomInCSSselectors += "img, ";
+	}
+	if (response.exemptObjectsZoomIn)
+	{
+	    zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
+	}
+	if (response.exemptAppletsZoomIn)
+	{
+	    zoomExemptedElementsZoomInCSSselectors += "applets, ";
+	}
     });
 }
 
@@ -18,44 +32,37 @@ function fillOptions(optionName)
 	
 function zoom()
 {
+    if (document.body == null)
+    {
+	setTimeout(zoom, 10);
+	return;
+    }
+    
     if (!zoomIsFunctional ||
-	document.body == null ||
 	window.outerWidth < 1) 
     {
 	return;
     }
     
-    var clientWidth = document.body.clientWidth;
-    var scrollWidth = document.body.scrollWidth;
-    var hasHorizontalScrollbar = (clientWidth < scrollWidth);
+    var realstatePercentage = (window.innerWidth * 100 / screen.width) / 100;
+    var zoom = (zoomMaximumAllow * realstatePercentage);
     
-    if (zoomMode == zoomModes.ShrinkOnly)
+    if ((zoomMode == zoomModes.ShrinkOnly && zoom > 100) ||
+	(zoomMode == zoomModes.GrowOnly && zoom < 100))
     {
-	if (hasHorizontalScrollbar)
-	{
-	    zoomIsFunctional = false;
-	    document.body.style.zoom = ((clientWidth * 100 / scrollWidth) - zoomErrorMargin) + "%";
-	    setTimeout(turnZoomOn, 10);
-	}
-	else
-	{
-	    document.body.style.zoom = "100%";
-	}
+	zoom = 100;
     }
-    else
+    
+    zoomIsFunctional = false;
+    document.body.parentElement.style.zoom = zoom + "%";
+
+    if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
     {
-	var realstatePercentage = (window.innerWidth * 100 / screen.width) / 100;
-	var zoom = (zoomMaximumAllow * realstatePercentage);
-	
-	if (zoomMode == zoomModes.GrowOnly && zoom < 100)
-	{
-	    zoom = 100;
-	}
-	
-	zoomIsFunctional = false;
-	document.body.style.zoom = zoom + "%";
-	setTimeout(turnZoomOn, 10);
+	var styleElem = document.head.insertBefore(document.createElement('style'));
+	styleElem.innerText = "img, object, embed { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
     }
+    
+    setTimeout(turnZoomOn, 10);
 }
 
 function turnZoomOn() {

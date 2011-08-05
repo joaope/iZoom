@@ -149,6 +149,31 @@
         "message": "Exempt sites from being resized using this extension. Exceptions are checked using <a href=\"http://www.w3schools.com/jsref/jsref_obj_regexp.asp\" target=\"blank\">JavaScript Regular Expressions</a>. If you're not familiar with them please use Tabs context menus to add exceptions automatically.",
         "description": "Exceptions explanation"
     },
+    
+    "options_exemptedElements_name": {
+        "message": "Exempted Elements",
+        "description": "Exempted Elements main options name"
+    },
+    
+    "options_exemptedElements_imagesZoomIn": {
+        "message": "Exclude images from zooming in",
+        "description": "Exempt images from zooming in option description"
+    },
+    
+    "options_exemptedElements_objectsZoomIn": {
+        "message": "Exclude objects (flash videos, animations, etc.) from zooming in",
+        "description": "Exempt objects from zooming in option description"
+    },
+    
+    "options_exemptedElements_appletsZoomIn": {
+        "message": "Exclude Java applets from zooming in",
+        "description": "Exempt applets from zooming in option description"
+    },
+    
+    "options_exemptedElements_explanation": {
+        "message": "Exempted elements are not affected by grow changes. Excluding any of this elements may lead to a slower performance when zooming and even poor layout arrangement so please use this options carefully. Moreover, some websites may control elements' size so this options won't work at all in those cases.",
+        "description": "Explanation of what happens when elements are exempted from zooming"
+    },
 
     "popup_quickOptions": {
         "message": "Quick Options",

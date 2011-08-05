@@ -149,6 +149,31 @@
         "message": "Evita que determinadas páginas sejam ajustadas usando esta extensão. Excepções são verificadas usando <a href=\"http://www.w3schools.com/jsref/jsref_obj_regexp.asp\" target=\"blank\">Expressões Regulares JavaScript</a>. Se não está familiarizado com a sua utilização, por favor, utilize o menu de contexto em cada página para adicionar excepções automaticamente.",
         "description": "Exceptions explanation"
     },
+    
+        "options_exemptedElements_name": {
+        "message": "Elementos Excluídos",
+        "description": "Exempted Elements main options name"
+    },
+    
+    "options_exemptedElements_imagesZoomIn": {
+        "message": "Excluir imagens de serem ampliadas",
+        "description": "Exempt images from zooming in option description"
+    },
+    
+    "options_exemptedElements_objectsZoomIn": {
+        "message": "Excluir objectos (vídeos em flash, animações, etc.) de serem ampliados",
+        "description": "Exempt objects from zooming in option description"
+    },
+    
+    "options_exemptedElements_appletsZoomIn": {
+        "message": "Excluir Java applets de serem ampliadas",
+        "description": "Exempt applets from zooming in option description"
+    },
+    
+    "options_exemptedElements_explanation": {
+        "message": "Elementos excluídos não são afectados pela ampliação. Excluir qualquer um destes elementos pode levar a uma pior performance a quando da ampliação e a um mau layout dos elementos na página. Para além disso, o tamanho de alguns desses elementos pode ser controlado pelo próprio website o que levará a que estas opções não surtam efeito.",
+        "description": "Explanation of what happens when elements are exempted from zooming"
+    },
 
     "popup_quickOptions": {
         "message": "Opções Rápidas",
