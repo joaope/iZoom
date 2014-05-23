@@ -1,11 +1,12 @@
 <html>
     <head>
-        <script src="scripts/main.js"></script>
+		<script src="scripts/main.js"></script>
         <script src="scripts/options.js"></script>
+		<script src="scripts/options_page.js"></script>
         <link rel="stylesheet" type="text/css" href="stylesheets/options.css"/>
     </head>
     
-    <body onLoad="initOptions()">
+    <body>
         <div id="main-div">
             <div id="main-title">
                 <div id="main-title-name"></div>
@@ -13,9 +14,9 @@
             </div>
             <div class="buttons">
                 <span class="refreshWarning" id="refreshWarningTop"></span>
-                <a class="button" id="saveButtonTop" onclick="saveOptions()"></a>               
-                <a class="button" id="cancelButtonTop" onclick="closeOptions()"></a>
-                <a class="button button-defaults" id="loadDefaultsTop" onclick="loadDefaultOptions()"></a>
+                <a class="button" id="saveButtonTop"></a>               
+                <a class="button" id="cancelButtonTop"></a>
+                <a class="button button-defaults" id="loadDefaultsTop"></a>
             </div>
             <div id="main-contents">
                 <table id="options-table">
@@ -23,10 +24,10 @@
                         <tr class="option-row">
                             <th id="enabled-name"></th>
                             <td>
-                                <input name="enabled" id="enabled-yes" type="radio" onclick="optionsFormState(true)"/>
+                                <input name="enabled" id="enabled-yes" type="radio"/>
                                     <label id="enabled-yes-label" for="enabled-yes"></label>
                                     <br>            
-                                <input name="enabled" id="enabled-no" type="radio" onclick="optionsFormState(false)"/>
+                                <input name="enabled" id="enabled-no" type="radio"/>
                                     <label id="enabled-no-label" for="enabled-no"></label>
                             </td>
                         </tr>
@@ -92,10 +93,13 @@
             </div>
             <div class="buttons">
                 <span class="refreshWarning" id="refreshWarningBottom"></span>
-                <a class="button" id="saveButtonBottom" onclick="saveOptions()"></a>               
-                <a class="button" id="cancelButtonBottom" onclick="closeOptions()"></a>
-                <a class="button button-defaults" id="loadDefaultsBottom" onclick="loadDefaultOptions()"></a>
+                <a class="button" id="saveButtonBottom"></a>               
+                <a class="button" id="cancelButtonBottom"></a>
+                <a class="button button-defaults" id="loadDefaultsBottom"></a>
             </div>
         </div>
+		
+		<script src="scripts/options.js"></script>
+		<script src="scripts/main.js"></script>
     </body>
 </html>

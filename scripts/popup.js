@@ -1,5 +1,26 @@
+document.addEventListener('DOMContentLoaded', initPopup);
+
 function initPopup()
 {
+    // Bind events
+    $_('enabled-yes').addEventListener('click', popupQuickSave);
+    $_('enabled-no').addEventListener('click', popupQuickSave);
+    $_('zoomMode-shrinkOnly').addEventListener('click', popupQuickSave);
+    $_('zoomMode-growOnly').addEventListener('click', popupQuickSave);
+    $_('zoomMode-shrinkAndGrow').addEventListener('click', popupQuickSave);
+    $_('advanced-options').addEventListener('click', function()
+    {
+        var options_url = chrome.extension.getURL('options.html');
+        chrome.tabs.query({
+            url: options,
+        }, function(results) {
+            if (results.length)
+                chrome.tabs.update(results[0].id, {active:true});
+            else
+                chrome.tabs.create({url:options});
+        })
+    });
+    
     // Do translation
     $_('main-title').innerHTML = i18n('popup_quickOptions');
     

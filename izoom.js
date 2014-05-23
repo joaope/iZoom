@@ -7,25 +7,32 @@ zoomExemptedElementsZoomInCSSselectors = null;
 
 function fillOptions(optionName)
 {
-    chrome.extension.sendRequest({type: "options", location: window.location.toString()}, function(response) {
-	zoomMode = response.zoomMode;
-	zoomErrorMargin = response.errorMargin;
-	zoomMaximumAllow = response.maximumZoomAllowed;
-	zoomIsFunctional = (response.enabled && !response.isException ? true : false);
-	
-	if (response.exemptImagesZoomIn)
-	{
-	    zoomExemptedElementsZoomInCSSselectors += "img, ";
-	}
-	if (response.exemptObjectsZoomIn)
-	{
-	    zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
-	}
-	if (response.exemptAppletsZoomIn)
-	{
-	    zoomExemptedElementsZoomInCSSselectors += "applets, ";
-	}
-    });
+    chrome.extension.sendRequest(
+		{
+			type: "options",
+			location: window.location.toString()
+		},
+		function(response)
+		{
+			zoomMode = response.zoomMode;
+			zoomErrorMargin = response.errorMargin;
+			zoomMaximumAllow = response.maximumZoomAllowed;
+			zoomIsFunctional = (response.enabled && !response.isException ? true : false);
+			
+			if (response.exemptImagesZoomIn)
+			{
+				zoomExemptedElementsZoomInCSSselectors += "img, ";
+			}
+			if (response.exemptObjectsZoomIn)
+			{
+				zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
+			}
+			if (response.exemptAppletsZoomIn)
+			{
+				zoomExemptedElementsZoomInCSSselectors += "applets, ";
+			}
+		}
+	);
 }
 
 /***************************************/
@@ -34,30 +41,30 @@ function zoom()
 {
     if (document.body == null)
     {
-	setTimeout(zoom, 10);
-	return;
+		window.setTimeout(function() { zoom; }, 10);
+		return;
     }
     
     if (!zoomIsFunctional || window.outerWidth < 1) 
     {
-	return;
+		return;
     }
     
     var realstatePercentage = (window.innerWidth * 100 / screen.width) / 100;
     var zoom = (zoomMaximumAllow * realstatePercentage);
     
     if ((zoomMode == zoomModes.ShrinkOnly && zoom > 100) ||
-	(zoomMode == zoomModes.GrowOnly && zoom < 100))
+		(zoomMode == zoomModes.GrowOnly && zoom < 100))
     {
-	zoom = 100;
+		zoom = 100;
     }
 
     document.body.parentElement.style.zoom = zoom + "%";
 
     if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
     {
-	var styleElem = document.head.insertBefore(document.createElement('style'));
-	styleElem.innerText = "img, object, embed { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
+		var styleElem = document.head.insertBefore(document.createElement('style'));
+		styleElem.innerText = "img, object, embed { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
     }
 }
 
