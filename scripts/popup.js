@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', initPopup);
 
+var iZoomPopupInitialized = false;
+
 function initPopup()
 {
+    if (iZoomPopupInitialized) {
+        return;
+    }
+    
+    iZoomPopupInitialized = true;
+    
     // Bind events
     $_('enabled-yes').addEventListener('click', popupQuickSave);
     $_('enabled-no').addEventListener('click', popupQuickSave);
@@ -10,15 +18,22 @@ function initPopup()
     $_('zoomMode-shrinkAndGrow').addEventListener('click', popupQuickSave);
     $_('advanced-options').addEventListener('click', function()
     {
-        var options_url = chrome.extension.getURL('options.html');
+        var optionsUrl = chrome.extension.getURL('options.html');
+        
         chrome.tabs.query({
-            url: options,
+            url: optionsUrl,
         }, function(results) {
             if (results.length)
-                chrome.tabs.update(results[0].id, {active:true});
+            {
+                chrome.tabs.update(results[0].id, {active:true});   
+            }
             else
-                chrome.tabs.create({url:options});
+            {
+                chrome.tabs.create({url:optionsUrl});   
+            }
         })
+        
+        return false;
     });
     
     // Do translation

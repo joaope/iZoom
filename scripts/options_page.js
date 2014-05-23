@@ -1,7 +1,15 @@
 document.addEventListener('DOMContentLoaded', initOptions);
 
+var iZoomOptionsPageInitialized = false;
+
 function initOptions()
 {
+    if (iZoomOptionsPageInitialized) {
+        return;
+    }
+    
+    iZoomOptionsPageInitialized = true;
+    
     // Bind events
     $_('saveButtonTop').addEventListener('click', saveOptions);
     $_('cancelButtonTop').addEventListener('click', saveOptions);
