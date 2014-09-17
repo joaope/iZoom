@@ -23,7 +23,7 @@ options = (function()
         {
             return {
                 enabled: true,
-                zoomMode: zoomModes.ShrinkOnly,
+                zoomMode: zoomModes.ShrinkAndGrow,
                 // Calculate default MaxZoomAllowed value based on this
                 // assumptions, founded after a few tests:
                 //
