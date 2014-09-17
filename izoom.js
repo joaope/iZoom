@@ -39,12 +39,6 @@ function fillOptions(optionName)
 	
 function zoom()
 {
-    if (document.body == null)
-    {
-		window.setTimeout(function() { zoom; }, 10);
-		return;
-    }
-    
     if (!zoomIsFunctional || window.outerWidth < 1) 
     {
 		return;
@@ -68,12 +62,12 @@ function zoom()
     }
 }
 
-window.onresize = function()
+window.document.addEventListener("DOMContentLoaded", function(event)
 {
     zoom();
-}
+});
 
-window.onload = function()
+window.onresize = function()
 {
     zoom();
 }
