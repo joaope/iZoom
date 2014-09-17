@@ -30,7 +30,6 @@
     "content_scripts":
     [
         {
-            "all_frames": true,
             "js":
             [
 				"scripts/main.js",
