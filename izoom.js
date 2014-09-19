@@ -1,45 +1,14 @@
-/************* OPTIONS *****************/
 zoomIsFunctional = (options.getDefaults().enabled && !options.isException(window.location.toString()) ? true : false);
 zoomMode = options.getDefaults().zoomMode;
 zoomMaximumAllow = options.getDefaults().maximumZoomAllowed;
 zoomErrorMargin = options.getDefaults().errorMargin;
 zoomExemptedElementsZoomInCSSselectors = null;
 
-function fillOptions(optionName)
-{
-    chrome.extension.sendRequest(
-		{
-			type: "options",
-			location: window.location.toString()
-		},
-		function(response)
-		{
-			zoomMode = response.zoomMode;
-			zoomErrorMargin = response.errorMargin;
-			zoomMaximumAllow = response.maximumZoomAllowed;
-			zoomIsFunctional = (response.enabled && !response.isException ? true : false);
-			
-			if (response.exemptImagesZoomIn)
-			{
-				zoomExemptedElementsZoomInCSSselectors += "img, ";
-			}
-			if (response.exemptObjectsZoomIn)
-			{
-				zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
-			}
-			if (response.exemptAppletsZoomIn)
-			{
-				zoomExemptedElementsZoomInCSSselectors += "applets, ";
-			}
-		}
-	);
-}
+optionsFilled = false;
 
-/***************************************/
-	
-function zoom()
+var zoomLogic = function()
 {
-    if (!zoomIsFunctional || window.outerWidth < 1) 
+    if (document.body == null || !zoomIsFunctional || window.outerWidth < 1) 
     {
 		return;
     }
@@ -58,9 +27,56 @@ function zoom()
     if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
     {
 		var styleElem = document.head.insertBefore(document.createElement('style'));
-		styleElem.innerText = "img, object, embed { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
+		styleElem.innerText = zoomExemptedElementsZoomInCSSselectors + " { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
     }
+};
+
+function zoom()
+{
+	if (optionsFilled)
+	{
+		zoomLogic();
+	}
+	else
+	{
+		chrome.extension.sendRequest(
+			{
+				type: "options",
+				location: window.location.toString()
+			},
+			function(response)
+			{
+				zoomMode = response.zoomMode;
+				zoomErrorMargin = response.errorMargin;
+				zoomMaximumAllow = response.maximumZoomAllowed;
+				zoomIsFunctional = (response.enabled && !response.isException ? true : false);
+				
+				if (response.exemptImagesZoomIn)
+				{
+					zoomExemptedElementsZoomInCSSselectors += "img, ";
+				}
+				if (response.exemptObjectsZoomIn)
+				{
+					zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
+				}
+				if (response.exemptAppletsZoomIn)
+				{
+					zoomExemptedElementsZoomInCSSselectors += "applets, ";
+				}
+				
+				if (zoomExemptedElementsZoomInCSSselectors != null)
+				{
+					zoomExemptedElementsZoomInCSSselectors = zoomExemptedElementsZoomInCSSselectors.slice(0, -1);
+				}
+				
+				optionsFilled = true;
+				
+				zoomLogic();
+			}
+		);
+	}
 }
+
 
 window.document.addEventListener("DOMContentLoaded", function(event)
 {
@@ -71,5 +87,3 @@ window.onresize = function()
 {
     zoom();
 }
-
-fillOptions();
