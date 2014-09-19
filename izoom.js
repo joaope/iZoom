@@ -22,7 +22,7 @@ var zoomLogic = function()
 		zoom = 100;
     }
 
-    document.body.parentElement.style.zoom = zoom + "%";
+    document.body.parentElement.style.zoom = (zoom - zoomErrorMargin) + "%";
 
     if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
     {
