@@ -14,8 +14,8 @@ function initOptions()
     $_('saveButtonTop').addEventListener('click', saveOptions);
     $_('cancelButtonTop').addEventListener('click', saveOptions);
     $_('loadDefaultsTop').addEventListener('click', loadDefaultOptions);
-    $_('enabled-yes').addEventListener('click', optionsFormState(true));
-    $_('enabled-no').addEventListener('click', optionsFormState(false));
+    $_('enabled-yes').addEventListener('change', function() { optionsFormState(true); });
+    $_('enabled-no').addEventListener('change', function() { optionsFormState(false); });
     $_('saveButtonBottom').addEventListener('click', saveOptions);
     $_('cancelButtonBottom').addEventListener('click', saveOptions);
     $_('loadDefaultsBottom').addEventListener('click', loadDefaultOptions);
