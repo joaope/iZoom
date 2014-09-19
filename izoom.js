@@ -21,8 +21,12 @@ var zoomLogic = function()
     {
 		zoom = 100;
     }
+	else
+	{
+		zoom = zoom - zoomErrorMargin;	
+	}
 
-    document.body.parentElement.style.zoom = (zoom - zoomErrorMargin) + "%";
+    document.body.parentElement.style.zoom = zoom + "%";
 
     if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
     {
