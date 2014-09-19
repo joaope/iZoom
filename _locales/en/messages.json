@@ -181,7 +181,7 @@
     },
     
     "popup_requireReload": {
-        "message": "(require page reload)",
+        "message": "(requires page reload)",
         "description": "Warns user that he/she should reload page for changes to take effect"
     },
     
