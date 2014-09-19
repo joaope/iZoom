@@ -77,11 +77,16 @@ function zoom()
 	}
 }
 
-
-window.document.addEventListener("DOMContentLoaded", function(event)
-{
-    zoom();
+var observer = new window.MutationObserver(function(mutations, observer) {  
+  mutations.forEach(function(mutation) {
+	  if (mutation.addedNodes.length == 1 && mutation.addedNodes[0].nodeName == "BODY") {
+		zoom();
+		observer.disconnect();
+	  }
+  });
 });
+
+observer.observe(document, { childList: true, subtree: true });
 
 window.onresize = function()
 {
