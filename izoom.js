@@ -1,7 +1,7 @@
-zoomIsFunctional = (options.getDefaults().enabled && !options.isException(window.location.toString()) ? true : false);
-zoomMode = options.getDefaults().zoomMode;
-zoomMaximumAllow = options.getDefaults().maximumZoomAllowed;
-zoomErrorMargin = options.getDefaults().errorMargin;
+zoomIsFunctional = null;
+zoomMode = null;
+zoomMaximumAllow = null;
+zoomErrorMargin = null;
 zoomExemptedElementsZoomInCSSselectors = null;
 
 optionsFilled = false;
