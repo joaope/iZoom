@@ -24,7 +24,8 @@ function initOptions()
     document.title = i18n('options_mainTitle');
     
     $_('main-title-name').innerHTML = i18n('options_mainTitle');
-    $_('main-title-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.app.getDetails().version + ')';
+    $_('main-title-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.runtime.getManifest().version + ')';
+    $_('main-title-logo').src = chrome.runtime.getManifest().icons["32"];
     
     $_('saveButtonTop').innerHTML = i18n('options_saveButton');
     $_('cancelButtonTop').innerHTML = i18n('options_cancelButton');

@@ -37,7 +37,7 @@ a:hover {
 #main-title {
     padding: 5px 10px;
     border: 1px solid black;
-    background-color: #3B5998;
+    background-color: #3DA3DA;
     color: white;
     font-size: 25px;
     font-weight: bold;
@@ -46,6 +46,11 @@ a:hover {
 }
 
 #main-title-name {
+    float: left;
+    margin-left: 10px;
+}
+
+#main-title-logo {
     float: left;
 }
 
@@ -58,9 +63,7 @@ a:hover {
 }
 
 .buttons {
-    margin-top: 10px;
-    padding: 2px 10px;
-    border: 1px solid black;
+    margin-top: 5px;
     color: black;
     font-size: 25px;
     font-weight: bold;
@@ -94,7 +97,7 @@ a:hover {
 
 .buttons .button-defaults {
     margin-left: 15px;
-    color: gray;
+    color: #7F0000;
 }
 
 .buttons .button:hover {
@@ -106,7 +109,7 @@ a:hover {
 }
 
 #main-contents {
-    margin-top: 10px;
+    margin-top: 5px;
     border: 1px solid black;
     background-color: #F7F7F7;
     border-radius: 5px;
@@ -124,7 +127,6 @@ a:hover {
 
 #options-table .option-row {
     border-bottom: 1px solid #B9C4DA;
-    padding-bottom: 20px;
     vertical-align: top;
 }
 
@@ -132,14 +134,14 @@ a:hover {
     font-size: 14px;
     width: auto;
     min-width: 200px;
-    padding: 20px 20px 20px 0;
+    padding: 15px 20px 20px 0;
 }
 
 #options-table .option-row td {
     font-size: 12px;
     width: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #options-table .option-row td .option-explanation-1 {
