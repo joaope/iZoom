@@ -36,10 +36,7 @@ options = (function()
                 // y = 3/32x
                 maximumZoomAllowed: Math.floor(3 / 32 * screen.width),
                 errorMargin: 2,
-                exceptions: new Array('http[s]?://mail.google.com(/*)'),
-                exemptImagesZoomIn: false,
-                exemptObjectsZoomIn: false,
-                exemptAppletsZoomIn: false
+                exceptions: new Array('http[s]?://mail.google.com(/*)')
             };
         },
         
@@ -93,21 +90,6 @@ options = (function()
                 {
                     var exceptions = (option != undefined && option.length > 0 ? option.split(',') : new Array());
                     return (option == undefined ? options.getDefaults().exceptions : exceptions);
-                }
-                
-                case 'exemptimageszoomin':
-                {
-                    return (option == 'true' ? true : options.getDefaults().exemptImagesZoomIn);
-                }
-                
-                case 'exemptobjectszoomin':
-                {
-                    return (option == 'true' ? true : options.getDefaults().exemptObjectsZoomIn);
-                }
-                
-                case 'exemptappletszoomin':
-                {
-                    return (option == 'true' ? true : options.getDefaults().exemptAppletsZoomIn);
                 }
                 
                 default:

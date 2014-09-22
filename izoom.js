@@ -2,7 +2,6 @@ zoomIsFunctional = null;
 zoomMode = null;
 zoomMaximumAllow = null;
 zoomErrorMargin = null;
-zoomExemptedElementsZoomInCSSselectors = null;
 
 optionsFilled = false;
 
@@ -27,12 +26,6 @@ var zoomLogic = function()
 	}
 
     document.body.parentElement.style.zoom = zoom + "%";
-
-    if (zoomMode != zoomModes.ShrinkOnly && zoomExemptedElementsZoomInCSSselectors != null)
-    {
-		var styleElem = document.head.insertBefore(document.createElement('style'));
-		styleElem.innerText = zoomExemptedElementsZoomInCSSselectors + " { zoom: " + (zoom > 100 ? (100/zoom) : 'auto') + "; }\n";
-    }
 };
 
 function zoom()
@@ -54,24 +47,6 @@ function zoom()
 				zoomErrorMargin = response.errorMargin;
 				zoomMaximumAllow = response.maximumZoomAllowed;
 				zoomIsFunctional = (response.enabled && !response.isException ? true : false);
-				
-				if (response.exemptImagesZoomIn)
-				{
-					zoomExemptedElementsZoomInCSSselectors += "img, ";
-				}
-				if (response.exemptObjectsZoomIn)
-				{
-					zoomExemptedElementsZoomInCSSselectors += "object, embed, ";
-				}
-				if (response.exemptAppletsZoomIn)
-				{
-					zoomExemptedElementsZoomInCSSselectors += "applets, ";
-				}
-				
-				if (zoomExemptedElementsZoomInCSSselectors != null)
-				{
-					zoomExemptedElementsZoomInCSSselectors = zoomExemptedElementsZoomInCSSselectors.slice(0, -1);
-				}
 				
 				optionsFilled = true;
 				

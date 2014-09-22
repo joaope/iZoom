@@ -195,10 +195,7 @@ chrome.extension.onRequest.addListener(
 				zoomMode: options.getOption('ZoomMode'),
 				maximumZoomAllowed: options.getOption('MaximumZoomAllowed'),
 				errorMargin: options.getOption('ErrorMargin'),
-				isException: options.isException(request.location),
-				exemptImagesZoomIn: options.getOption('ExemptImagesZoomIn'),
-				exemptObjectsZoomIn: options.getOption('ExemptObjectsZoomIn'),
-				exemptAppletsZoomIn: options.getOption('ExemptAppletsZoomIn')
+				isException: options.isException(request.location)
 			});
 		}
 	});

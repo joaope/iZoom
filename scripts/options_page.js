@@ -54,12 +54,6 @@ function initOptions()
     $_('errorMargin-name').innerHTML = i18n('options_errorMargin_name');
     $_('errorMargin-percentage-explanation').innerHTML = i18n('options_errorMargin_percentageExplanation');
     
-    $_('exemptedElements-name').innerHTML = i18n('options_exemptedElements_name');
-    $_('exemptImagesZoomIn-label').innerHTML = i18n('options_exemptedElements_imagesZoomIn');
-    $_('exemptObjectsZoomIn-label').innerHTML = i18n('options_exemptedElements_objectsZoomIn');
-    $_('exemptAppletsZoomIn-label').innerHTML = i18n('options_exemptedElements_appletsZoomIn');
-    $_('exemptedElements-explanation').innerHTML = i18n('options_exemptedElements_explanation');
-    
     $_('exceptions-name').innerHTML = i18n('options_exceptions_name');
     $_('exceptions-list-explanation').innerHTML = i18n('options_exceptions_listExplanation');
     $_('exceptions-list-usage').innerHTML = i18n('options_exceptions_listUsage');
@@ -106,11 +100,6 @@ function loadOptions()
     // Error Margin
     $_('errorMargin').value = options.getOption('ErrorMargin');
     
-    // Exempted elements
-    $_('exemptImagesZoomIn').checked = options.getOption('ExemptImagesZoomIn');
-    $_('exemptObjectsZoomIn').checked = options.getOption('ExemptObjectsZoomIn');
-    $_('exemptAppletsZoomIn').checked = options.getOption('ExemptAppletsZoomIn');
-    
     // Exceptions
     var exceptions = options.getOption('exceptions');
     
@@ -136,11 +125,6 @@ function saveOptions()
     // Error Margin
     options.setOption('ErrorMargin', $_('errorMargin').value);
     
-    // Exempted elements
-    options.setOption('ExemptImagesZoomIn', $_('exemptImagesZoomIn').checked ? 'true' : 'false');
-    options.setOption('ExemptObjectsZoomIn', $_('exemptObjectsZoomIn').checked ? 'true' : 'false');
-    options.setOption('ExemptAppletsZoomIn', $_('exemptAppletsZoomIn').checked ? 'true' : 'false');
-    
     // Exceptions
     var exceptions = $_('exceptions-list').value.split(/\n/g).join(',');
     options.setOption('exceptions', exceptions);
@@ -163,10 +147,7 @@ function loadDefaultOptions()
     
     $_('zoomMode-shrinkOnly').checked =
         $_('zoomMode-growOnly').checked =
-        $_('zoomMode-shrinkAndGrow').checked =
-        $_('exemptImagesZoomIn').checked =
-        $_('exemptObjectsZoomIn').checked =
-        $_('exemptAppletsZoomIn').checked = false;
+        $_('zoomMode-shrinkAndGrow').checked = false;
         
     $_('exceptions-list').value = "";
     
@@ -192,11 +173,6 @@ function loadDefaultOptions()
     // Error Margin
     $_('errorMargin').value = defaults.errorMargin.toString();
     
-    // Exempted elements
-    $_('exemptImagesZoomIn').checked = defaults.exemptImagesZoomIn;
-    $_('exemptObjectsZoomIn').checked = defaults.exemptObjectsZoomIn;
-    $_('exemptAppletsZoomIn').checked = defaults.exemptAppletsZoomIn;
-    
     // Exceptions
     var exceptions = defaults.exceptions;
     
@@ -213,8 +189,5 @@ function optionsFormState(enabled)
         $_('zoomMode-shrinkAndGrow').disabled =
         $_('maxZoomAllowed').disabled =
         $_('errorMargin').disabled =
-        $_('exceptions-list').disabled =
-        $_('exemptImagesZoomIn').disabled =
-        $_('exemptObjectsZoomIn').disabled =
-        $_('exemptAppletsZoomIn').disabled = !enabled;
+        $_('exceptions-list').disabled = !enabled;
 }
