@@ -8,7 +8,7 @@ optionsFilled = false;
 
 var zoomLogic = function()
 {
-    if (document.body == null || !zoomIsFunctional || window.outerWidth < 1) 
+    if (!zoomIsFunctional || window.outerWidth < 1) 
     {
 		return;
     }
