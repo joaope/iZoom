@@ -11,9 +11,6 @@ function initOptions()
     iZoomOptionsPageInitialized = true;
     
     // Bind events
-    $_('saveButtonTop').addEventListener('click', saveOptions);
-    $_('cancelButtonTop').addEventListener('click', saveOptions);
-    $_('loadDefaultsTop').addEventListener('click', loadDefaultOptions);
     $_('enabled-yes').addEventListener('change', function() { optionsFormState(true); });
     $_('enabled-no').addEventListener('change', function() { optionsFormState(false); });
     $_('saveButtonBottom').addEventListener('click', saveOptions);
@@ -27,10 +24,6 @@ function initOptions()
     $_('main-title-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.runtime.getManifest().version + ')';
     $_('main-title-logo').src = chrome.runtime.getManifest().icons["32"];
     
-    $_('saveButtonTop').innerHTML = i18n('options_saveButton');
-    $_('cancelButtonTop').innerHTML = i18n('options_cancelButton');
-    $_('refreshWarningTop').innerHTML = i18n('options_refreshWarning');
-    $_('loadDefaultsTop').innerHTML = i18n('options_loadDefaultsButton');
     $_('saveButtonBottom').innerHTML = i18n('options_saveButton');
     $_('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
     $_('refreshWarningBottom').innerHTML = i18n('options_refreshWarning');

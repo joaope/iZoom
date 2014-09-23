@@ -8,17 +8,13 @@
     
     <body>
         <div id="main-div">
-            <div id="main-title">
-				<img id="main-title-logo"/>
-                <div id="main-title-name"></div>
-                <div id="main-title-version"></div>
-            </div>
-            <div class="buttons">
-                <span class="refreshWarning" id="refreshWarningTop"></span>
-                <a class="button" id="saveButtonTop"></a>               
-                <a class="button" id="cancelButtonTop"></a>
-                <a class="button button-defaults" id="loadDefaultsTop"></a>
-            </div>
+			<div id="toppanel">
+				<div id="main-title">
+					<img id="main-title-logo"/>
+					<div id="main-title-name"></div>
+					<div id="main-title-version"></div>
+				</div>
+			</div>
             <div id="main-contents">
                 <table id="options-table">
                     <tbody>
@@ -78,12 +74,16 @@
                     </tbody>
                 </table>
             </div>
-            <div class="buttons">
-                <span class="refreshWarning" id="refreshWarningBottom"></span>
-                <a class="button" id="saveButtonBottom"></a>               
-                <a class="button" id="cancelButtonBottom"></a>
-                <a class="button button-defaults" id="loadDefaultsBottom"></a>
-            </div>
+            <div id="bottompanel">
+				<div class="buttons">
+					<div class="right">
+						<span class="refreshWarning" id="refreshWarningBottom"></span>
+						<a class="button" id="saveButtonBottom"></a>               
+						<a class="button" id="cancelButtonBottom"></a>
+						<a class="button button-defaults" id="loadDefaultsBottom"></a>
+					</div>
+				</div>
+			</div>
         </div>
 		
 		<script src="scripts/options.js"></script>
