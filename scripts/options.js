@@ -35,6 +35,7 @@ options = (function()
                 //
                 // y = 3/32x
                 maximumZoomAllowed: Math.floor(3 / 32 * screen.width),
+                minimumZoomAllowed: 0,
                 exceptions: new Array('http[s]?://mail.google.com(/*)')
             };
         },
@@ -79,10 +80,10 @@ options = (function()
                     return (!isNaN(option) && option > 0 ? option : options.getDefaults().maximumZoomAllowed);
                 }
                 
-                case 'errormargin':
+                case 'minimumzoomallowed':
                 {
                     option = parseInt(option);
-                    return (!isNaN(option) && option >= 0 ? option : options.getDefaults().errorMargin);    
+                    return (!isNaN(option) && option >= 0 && option < options.getOption('MaximumZoomAllowed') ? option : options.getDefaults().minimumZoomAllowed);
                 }
                 
                 case 'exceptions':

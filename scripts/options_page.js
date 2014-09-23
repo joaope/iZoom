@@ -43,6 +43,8 @@ function initOptions()
     
     $_('maxZoomAllowed-name').innerHTML = i18n('options_maxZoomAllowed_name');
     $_('maxZoomAllowed-percentage-explanation').innerHTML = i18n('options_maxZoomAllowed_percentageExplanation');
+    $_('minZoomAllowed-name').innerHTML = i18n('options_minZoomAllowed_name');
+    $_('minZoomAllowed-percentage-explanation').innerHTML = i18n('options_minZoomAllowed_percentageExplanation');
     
     $_('exceptions-name').innerHTML = i18n('options_exceptions_name');
     $_('exceptions-list-explanation').innerHTML = i18n('options_exceptions_listExplanation');
@@ -87,8 +89,8 @@ function loadOptions()
     // Maximum Zoom Allowed
     $_('maxZoomAllowed').value = options.getOption('MaximumZoomAllowed');
     
-    // Error Margin
-    $_('errorMargin').value = options.getOption('ErrorMargin');
+    // Minimum Zoom Allowed
+    $_('minZoomAllowed').value = options.getOption('MinimumZoomAllowed');
     
     // Exceptions
     var exceptions = options.getOption('exceptions');
@@ -112,8 +114,8 @@ function saveOptions()
     // Maximum Zoom Allowed
     options.setOption('MaximumZoomAllowed', $_('maxZoomAllowed').value);
     
-    // Error Margin
-    options.setOption('ErrorMargin', $_('errorMargin').value);
+    // Minimum Zoom Allowed
+    options.setOption('MinimumZoomAllowed', $_('minZoomAllowed').value);
     
     // Exceptions
     var exceptions = $_('exceptions-list').value.split(/\n/g).join(',');
@@ -160,8 +162,8 @@ function loadDefaultOptions()
     // Maximum Zoom Allowed
     $_('maxZoomAllowed').value = defaults.maximumZoomAllowed;
     
-    // Error Margin
-    $_('errorMargin').value = defaults.errorMargin.toString();
+    // Minimum Zoom Allowed
+    $_('minZoomAllowed').value = defaults.minimumZoomAllowed.toString();
     
     // Exceptions
     var exceptions = defaults.exceptions;
@@ -178,6 +180,6 @@ function optionsFormState(enabled)
         $_('zoomMode-growOnly').disabled =
         $_('zoomMode-shrinkAndGrow').disabled =
         $_('maxZoomAllowed').disabled =
-        $_('errorMargin').disabled =
+        $_('minZoomAllowed').disabled =
         $_('exceptions-list').disabled = !enabled;
 }

@@ -121,8 +121,18 @@
     },
     
     "options_maxZoomAllowed_percentageExplanation": {
-        "message": "Este valor é usado pelos modos <b>Ampliar Apenas</b> e <b>Encolher e Ampliar</b> para calcular o tamanho máximo até ao qual os conteúdos podem ser ampliados. Regra geral este valor é o nível de zoom suportado pelo ecrã sem que a janela mostre a barra de scroll horizontal. No caso desta barra ser visualizada, mesmo quando a janela está maximizada, diminua este valor até ela desaparecer.",
+        "message": "Valor usado pelos modos <b>Ampliar Apenas</b> e <b>Encolher e Ampliar</b> para calcular o tamanho máximo até ao qual os conteúdos podem ser ampliados. Regra geral este valor é o nível de zoom suportado pelo ecrã sem que a janela mostre a barra de scroll horizontal. No caso desta barra ser visualizada, mesmo quando a janela está maximizada, diminua este valor até ela desaparecer.",
         "description": "Maximum Zoom Allowed percentage value explanation"
+    },
+    
+    "options_minZoomAllowed_name": {
+        "message": "Nível de Zoom Mínimo",
+        "description": "Minimum Zoom Allowed option name"
+    },
+    
+    "options_minZoomAllowed_percentageExplanation": {
+        "message": "Valor usado pelos modos <b>Encolher Apenas</b> e <b>Encolher e Ampliar</b> para especificar o tamanho mínimo até ao qual o <i>zoom in</i> funciona. Usando o valor <b>0</b> esta opção é ignorada.",
+        "description": "Minimum Zoom Allowed percentage value explanation"
     },
     
     "options_exceptions_name": {

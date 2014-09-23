@@ -194,6 +194,7 @@ chrome.extension.onRequest.addListener(
 				enabled: options.getOption('Enabled'),
 				zoomMode: options.getOption('ZoomMode'),
 				maximumZoomAllowed: options.getOption('MaximumZoomAllowed'),
+				minimumZoomAllowed: options.getOption('MinimumZoomAllowed'),
 				isException: options.isException(request.location)
 			});
 		}

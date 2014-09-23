@@ -121,8 +121,18 @@
     },
     
     "options_maxZoomAllowed_percentageExplanation": {
-        "message": "This value is used by <b>Grow Only</b> and <b>Shrink And Grow</b> modes to calculate the maximum size to which the contents may be enlarged. As a general rule this is the maximum zoom level that the screen supports without showing the horizontal scrollbar. In case horizontal scrollbar is showed, even when window is maximized, decreased this value until it disappears.",
+        "message": "Value used by <b>Grow Only</b> and <b>Shrink And Grow</b> modes to calculate the maximum size to which the contents may be enlarged to. As a general rule this is the maximum zoom level that the screen supports without showing the horizontal scrollbar. In case horizontal scrollbar is showed, even when window is maximized, decreased this value until it disappears.",
         "description": "Maximum Zoom Allowed percentage value explanation"
+    },
+    
+    "options_minZoomAllowed_name": {
+        "message": "Minimum Zoom Allowed",
+        "description": "Minimum Zoom Allowed option name"
+    },
+    
+    "options_minZoomAllowed_percentageExplanation": {
+        "message": "Value used by <b>Shrink Only</b> and <b>Shrink And Grow</b> modes to specify when to stop zooming in. Use <b>0</b> for the extension to ignore this option.",
+        "description": "Minimum Zoom Allowed percentage value explanation"
     },
 
     "options_exceptions_name": {
