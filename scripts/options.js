@@ -35,7 +35,6 @@ options = (function()
                 //
                 // y = 3/32x
                 maximumZoomAllowed: Math.floor(3 / 32 * screen.width),
-                errorMargin: 2,
                 exceptions: new Array('http[s]?://mail.google.com(/*)')
             };
         },

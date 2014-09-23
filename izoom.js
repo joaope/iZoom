@@ -1,7 +1,6 @@
 zoomIsFunctional = null;
 zoomMode = null;
 zoomMaximumAllow = null;
-zoomErrorMargin = null;
 
 optionsFilled = false;
 
@@ -20,10 +19,6 @@ var zoomLogic = function()
     {
 		zoom = 100;
     }
-	else
-	{
-		zoom = zoom - zoomErrorMargin;	
-	}
 
     document.body.parentElement.style.zoom = zoom + "%";
 };
@@ -44,7 +39,6 @@ function zoom()
 			function(response)
 			{
 				zoomMode = response.zoomMode;
-				zoomErrorMargin = response.errorMargin;
 				zoomMaximumAllow = response.maximumZoomAllowed;
 				zoomIsFunctional = (response.enabled && !response.isException ? true : false);
 				

@@ -124,17 +124,7 @@
         "message": "This value is used by <b>Grow Only</b> and <b>Shrink And Grow</b> modes to calculate the maximum size to which the contents may be enlarged. As a general rule this is the maximum zoom level that the screen supports without showing the horizontal scrollbar. In case horizontal scrollbar is showed, even when window is maximized, decreased this value until it disappears.",
         "description": "Maximum Zoom Allowed percentage value explanation"
     },
-    
-    "options_errorMargin_name": {
-        "message": "Error Margin",
-        "description": "Error Margin option name"
-    },
-    
-    "options_errorMargin_percentageExplanation": {
-        "message": "Small percentage value that is substracted to actual zoom level to avoid errors. Some small percentage should be enough.",
-        "description": "Error Margin percentage value explanation"
-    },
-    
+
     "options_exceptions_name": {
         "message": "Exceptions",
         "description": "Exceptions option name"

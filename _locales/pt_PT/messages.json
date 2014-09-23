@@ -125,16 +125,6 @@
         "description": "Maximum Zoom Allowed percentage value explanation"
     },
     
-    "options_errorMargin_name": {
-        "message": "Margem de erro",
-        "description": "Error Margin option name"
-    },
-    
-    "options_errorMargin_percentageExplanation": {
-        "message": "Percentagem subtraída ao valor de zoom a quando do ajustamente, para evitar que algum conteúdo seja escondido em determinadas páginas. Qualquer pequeno valor deverá ser suficiente.",
-        "description": "Error Margin percentage value explanation"
-    },
-    
     "options_exceptions_name": {
         "message": "Excepções",
         "description": "Exceptions option name"

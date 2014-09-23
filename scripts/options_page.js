@@ -44,9 +44,6 @@ function initOptions()
     $_('maxZoomAllowed-name').innerHTML = i18n('options_maxZoomAllowed_name');
     $_('maxZoomAllowed-percentage-explanation').innerHTML = i18n('options_maxZoomAllowed_percentageExplanation');
     
-    $_('errorMargin-name').innerHTML = i18n('options_errorMargin_name');
-    $_('errorMargin-percentage-explanation').innerHTML = i18n('options_errorMargin_percentageExplanation');
-    
     $_('exceptions-name').innerHTML = i18n('options_exceptions_name');
     $_('exceptions-list-explanation').innerHTML = i18n('options_exceptions_listExplanation');
     $_('exceptions-list-usage').innerHTML = i18n('options_exceptions_listUsage');
