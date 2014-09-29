@@ -53,12 +53,6 @@
         "description": "Cancel button text"
     },
     
-    "options_loadDefaultsButton":
-    {
-        "message": "Load Defaults",
-        "description": "Load defaults button text"
-    },
-    
     "options_enabled_name": {
         "message": "Enabled",
         "description": "Enabled option name"

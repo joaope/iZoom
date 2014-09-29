@@ -15,19 +15,17 @@ function initOptions()
     $_('enabled-no').addEventListener('change', function() { optionsFormState(false); });
     $_('saveButtonBottom').addEventListener('click', saveOptions);
     $_('cancelButtonBottom').addEventListener('click', saveOptions);
-    $_('loadDefaultsBottom').addEventListener('click', loadDefaultOptions);
-    
+
     // Do translation
     document.title = i18n('options_mainTitle');
     
-    $_('main-title-name').innerHTML = i18n('options_mainTitle');
-    $_('main-title-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.runtime.getManifest().version + ')';
-    $_('main-title-logo').src = chrome.runtime.getManifest().icons["32"];
+    $_('header-bar-name').innerHTML = i18n('options_mainTitle');
+    $_('header-bar-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.runtime.getManifest().version + ')';
+    $_('header-bar-logo').src = chrome.runtime.getManifest().icons["32"];
     
     $_('saveButtonBottom').innerHTML = i18n('options_saveButton');
     $_('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
     $_('refreshWarningBottom').innerHTML = i18n('options_refreshWarning');
-    $_('loadDefaultsBottom').innerHTML = i18n('options_loadDefaultsButton');
     
     $_('enabled-name').innerHTML = i18n('options_enabled_name');
     $_('enabled-yes-label').innerHTML = i18n('options_enabled_yes');
