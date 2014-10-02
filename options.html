@@ -1,90 +1,89 @@
 <html>
     <head>
-		<script src="scripts/main.js"></script>
+	<script src="scripts/main.js"></script>
         <script src="scripts/options.js"></script>
-		<script src="scripts/options_page.js"></script>
-		<link rel="stylesheet" type="text/css" href="stylesheets/reset.css"/>
+	<script src="scripts/options_page.js"></script>
+	<link rel="stylesheet" type="text/css" href="stylesheets/reset.css"/>
         <link rel="stylesheet" type="text/css" href="stylesheets/options.css"/>
     </head>
-	<body>
-		<div id="top-static-bar">
-			<div id="header-bar">
-				<img id="header-bar-logo"/>
-				<div id="header-bar-name"></div>
-				<div id="header-bar-version"></div>
-			</div>
-			<div id="save-buttons">
-				<span class="refreshWarning" id="refreshWarningBottom"></span>
-				<a class="button" id="saveButtonBottom"></a>               
-				<a class="button" id="cancelButtonBottom"></a>
-			</div>
-		</div>
-		<div id="main-contents">
-			<div class="option">
-				<div class="option-name">
-					<span id="enabled-name"></span>
-				</div>
-				<div class="option-content">
-					<input name="enabled" id="enabled-yes" type="radio"/>
-						<label id="enabled-yes-label" for="enabled-yes"></label>
-						<br>            
-					<input name="enabled" id="enabled-no" type="radio"/>
-						<label id="enabled-no-label" for="enabled-no"></label>
-				</div>
-			</div>
-			<div class="option">
-				<div class="option-name">
-					<span id="zoomMode-name"></span>
-				</div>
-				<div class="option-content">
-					<input id="zoomMode-shrinkOnly" type="radio" name="zoomMode"/>
-						<label id="zoomMode-shrinkOnly-label" for="zoomMode-shrinkOnly"></label>
-						<div id="zoomMode-shrinkOnly-explanation" class="option-explanation-2"></div>
-						<br>
-							
-					<input id="zoomMode-growOnly" type="radio" name="zoomMode"/>
-						<label id="zoomMode-growOnly-label" for="zoomMode-growOnly"></label>
-						<div id="zoomMode-growOnly-explanation" class="option-explanation-2"></div>
-						<br>
-							
-					<input id="zoomMode-shrinkAndGrow" type="radio" name="zoomMode"/>
-						<label id="zoomMode-shrinkAndGrow-label" for="zoomMode-shrinkAndGrow"></label>
-						<div id="zoomMode-shrinkAndGrow-explanation" class="option-explanation-2"></div>
-				</div>
-			</div>
-			<div class="option">
-				<div class="option-name">
-					<span id="maxZoomAllowed-name"></span>
-				</div>
-				<div class="option-content">
-
-						<input style="width: 50px; text-align:right;" id="maxZoomAllowed" type="text" name="maxZoomAllowed"/>
-						<span>%</span>
+    <body>
+	<div id="top-static-bar">
+	    <div id="header-bar">
+		<img id="header-bar-logo"/>
+		<div id="header-bar-name"></div>
+		<div id="header-bar-version"></div>
+	    </div>
+	    <div id="save-buttons">
+		<span class="refreshWarning" id="refreshWarningBottom"></span>
+		<a class="button" id="saveButtonBottom"></a>               
+		<a class="button" id="cancelButtonBottom"></a>
+	    </div>
+	</div>
+	<div id="main-contents">
+	    <div class="option">
+		    <div class="option-name">
+			<span id="enabled-name"></span>
+		    </div>
+		    <div class="option-content">
+			<input name="enabled" id="enabled-yes" type="radio"/>
+			    <label id="enabled-yes-label" for="enabled-yes"></label>
+			    <br>            
+			<input name="enabled" id="enabled-no" type="radio"/>
+			    <label id="enabled-no-label" for="enabled-no"></label>
+		    </div>
+	    </div>
+	    <div class="option">
+		    <div class="option-name">
+			<span id="zoomMode-name"></span>
+		    </div>
+		    <div class="option-content">
+			<input id="zoomMode-shrinkOnly" type="radio" name="zoomMode"/>
+			    <label id="zoomMode-shrinkOnly-label" for="zoomMode-shrinkOnly"></label>
+			    <div id="zoomMode-shrinkOnly-explanation" class="option-explanation-2"></div>
+			    <br>
 					
-					<div id="maxZoomAllowed-percentage-explanation" class="option-explanation-1"></div>
-				</div>
-			</div>
-			<div class="option">
-				<div class="option-name">
-					<span id="minZoomAllowed-name"></span>
-				</div>
-				<div class="option-content">
-					<input style="width: 50px; text-align:right;" id="minZoomAllowed" type="text" name="minZoomAllowed"/>
-					<span>%</span>
-					<div id="minZoomAllowed-percentage-explanation" class="option-explanation-1"></div>
-				</div>
-			</div>
-			<div class="option noborder">
-				<div class="option-name">
-					<span id="exceptions-name"></span>
-				</div>
-				<div class="option-content">
-					<textarea id="exceptions-list"></textarea>
-					<div id="exceptions-list-usage" class="option-explanation-1"></div>
-					<br>
-					<div id="exceptions-list-explanation" class="option-explanation-1"></div>
-				</div>
-			</div>
+			<input id="zoomMode-growOnly" type="radio" name="zoomMode"/>
+			    <label id="zoomMode-growOnly-label" for="zoomMode-growOnly"></label>
+			    <div id="zoomMode-growOnly-explanation" class="option-explanation-2"></div>
+			    <br>
+					
+			<input id="zoomMode-shrinkAndGrow" type="radio" name="zoomMode"/>
+			    <label id="zoomMode-shrinkAndGrow-label" for="zoomMode-shrinkAndGrow"></label>
+			    <div id="zoomMode-shrinkAndGrow-explanation" class="option-explanation-2"></div>
+		    </div>
+	    </div>
+	    <div class="option">
+		<div class="option-name">
+		    <span id="maxZoomAllowed-name"></span>
 		</div>
-	</body>
+		<div class="option-content">
+		    <input style="width: 50px; text-align:right;" id="maxZoomAllowed" type="text" name="maxZoomAllowed"/>
+		    <span>%</span>
+			
+		    <div id="maxZoomAllowed-percentage-explanation" class="option-explanation-1"></div>
+		</div>
+	    </div>
+	    <div class="option">
+		<div class="option-name">
+		    <span id="minZoomAllowed-name"></span>
+		</div>
+		<div class="option-content">
+		    <input style="width: 50px; text-align:right;" id="minZoomAllowed" type="text" name="minZoomAllowed"/>
+		    <span>%</span>
+		    <div id="minZoomAllowed-percentage-explanation" class="option-explanation-1"></div>
+		</div>
+	    </div>
+	    <div class="option noborder">
+		<div class="option-name">
+		    <span id="exceptions-name"></span>
+		</div>
+		<div class="option-content">
+		    <textarea id="exceptions-list"></textarea>
+		    <div id="exceptions-list-usage" class="option-explanation-1"></div>
+		    <br>
+		    <div id="exceptions-list-explanation" class="option-explanation-1"></div>
+		</div>
+	    </div>
+	</div>
+    </body>
 </html>
