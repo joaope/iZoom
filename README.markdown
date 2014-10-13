@@ -1,3 +1,5 @@
+[![Analytics](https://ga-beacon.appspot.com/UA-55655362-1/joaope/izoom/readme.markdown)](https://github.com/joaope/izoom)
+
 # iZoom #
 
 Chrome extension that automatically changes zoom level to fit window width.
