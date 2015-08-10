@@ -6,33 +6,42 @@ var less = require('gulp-less');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var del = require('del')
+var manifest = require('./manifest.json');
+var util = require('util');
+var zip = require('gulp-zip');
 
-var isDeploy = false;
-var releaseFolder = 'dist';
+var isToUglify = false;
+
+var unpackagedFolder = 'dist';
+var packageFolder = 'release';
+
+gulp.task('uglify_on', function() {
+  isToUglify = true;
+})
 
 gulp.task('scripts', function() {
   return gulp.src([
       'node_modules/jsuri/Uri.js',
       'scripts/*.js'
     ])
-    .pipe(gulpif(isDeploy, uglify({
+    .pipe(gulpif(isToUglify, uglify({
       mangle: false
     })))
-    .pipe(gulp.dest(releaseFolder + '/scripts'));
+    .pipe(gulp.dest(unpackagedFolder + '/scripts'));
 });
 
 gulp.task('locales', function() {
   return gulp.src(['_locales/**/messages.json'], {
       base: './'
     })
-    .pipe(gulp.dest(releaseFolder))
+    .pipe(gulp.dest(unpackagedFolder))
 });
 
 gulp.task('media', function() {
   return gulp.src(['media/**/*.*'], {
       base: './'
     })
-    .pipe(gulp.dest(releaseFolder))
+    .pipe(gulp.dest(unpackagedFolder))
 })
 
 gulp.task('styles', function() {
@@ -40,20 +49,20 @@ gulp.task('styles', function() {
       base: './'
     })
     .pipe(less())
-    .pipe(gulpif(isDeploy, cssmin()))
-    .pipe(gulp.dest(releaseFolder));
+    .pipe(gulpif(isToUglify, cssmin()))
+    .pipe(gulp.dest(unpackagedFolder));
 });
 
 gulp.task('html', function() {
   return gulp.src(['html/**/*.html'], {
       base: './'
     })
-    .pipe(gulp.dest(releaseFolder));
+    .pipe(gulp.dest(unpackagedFolder));
 })
 
 gulp.task('manifest', function() {
   return gulp.src('manifest.json')
-    .pipe(gulp.dest(releaseFolder));
+    .pipe(gulp.dest(unpackagedFolder));
 })
 
 gulp.task('clean', function() {
@@ -74,5 +83,20 @@ gulp.task('watch', function() {
   gulp.watch('manifest.json', ['manifest']).on('change', cb);
 });
 
+// watches changes and move files to 'unpackagedFolder' folder for the
+// extension to be ran as 'unpacked extension' from chrome
 gulp.task('default', ['watch']);
-gulp.task('deploy', ['clean', 'manifest', 'scripts', 'html', 'media', 'styles', 'locales'])
+
+// moves all files to 'unpackedFolder'
+gulp.task('unpackage', ['clean', 'manifest', 'scripts', 'html', 'media', 'styles', 'locales']);
+
+// same as 'unpackage' but minifies .js and .css files first
+gulp.task('unpackage_uglify', ['uglify_on', 'unpackage']);
+
+// moves all files to 'unpackedFolder' folder and creates a .zip package from it on 'packageFolder' folder
+// zip file is named after manifest.json version property
+gulp.task('package', ['uglify_on', 'unpackage'], function() {
+  return gulp.src(unpackagedFolder + '/**/*.*')
+    .pipe(zip('iZoom-' + manifest.version + '.zip'))
+    .pipe(gulp.dest(packageFolder));
+});
