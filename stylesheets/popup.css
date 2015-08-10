@@ -1,86 +1,75 @@
 body {
-    margin: 0px;
-    min-width: 170px;
-    font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+  margin: 0px;
+  min-width: 170px;
+  font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 }
-
 .nomargin {
-    margin: 0px !important;
+  margin: 0px !important;
 }
-
 label {
-    font-size: 10px;
+  font-size: 10px;
 }
-
 #main-div {
-    padding: 5px;
+  padding: 5px;
 }
-
 #main-title {
-    text-align: center;
-    padding: 5px 10px;
-    border: 1px solid black;
-    background-color: #3DA3DA;
-    color: white;
-    font-size: 11px;
-    font-weight: bold;
-    border-radius: 5px;
+  text-align: center;
+  padding: 5px 10px;
+  border: 1px solid black;
+  background-color: #3DA3DA;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 5px;
 }
-
 #options {
-    width: 150px;
-    margin: 10px auto;
+  width: 150px;
+  margin: 10px auto;
 }
-
 .option {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
-
 .option .option-title {
-    display: block;
-    border-bottom: 1px solid #B9C4DA;
-    margin-bottom: 5px;
-    font-weight: bold;
-    font-size: 11px;
+  display: block;
+  border-bottom: 1px solid #B9C4DA;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 11px;
 }
-
 #require-reload {
-    width: 150px;
-    border-top: 1px solid #B9C4DA;
-    color: #7B7B91;
-    font-size: 10px;
-    margin: 10px auto;
-    padding-top: 10px;
-    text-align: center;
+  width: 150px;
+  border-top: 1px solid #B9C4DA;
+  color: #7B7B91;
+  font-size: 10px;
+  margin: 10px auto;
+  padding-top: 10px;
+  text-align: center;
 }
-
 #more-options-div {
-    width: 150px;
-    border-top: 1px solid #B9C4DA;
-    color: #7B7B91;
-    font-size: 10px;
-    margin: 10px auto 0px auto;
-    padding-top: 10px;
-    text-align: center;
+  width: 150px;
+  border-top: 1px solid #B9C4DA;
+  color: #7B7B91;
+  font-size: 10px;
+  margin: 10px auto 0px auto;
+  padding-top: 10px;
+  text-align: center;
 }
-
 .button {
-    display: block;
-    text-decoration: none;
-    border: 1px solid #999;
-    border-bottom-color: #999;
-    background-color: #DDD;
-    vertical-align: middle;
-    color: black;
-    font-size: 11px;
-    font-weight: bold;
-    padding: 2px 6px;
-    text-align: center;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 8px;
+  display: block;
+  text-decoration: none;
+  border: 1px solid #999;
+  border-bottom-color: #999;
+  background-color: #DDD;
+  vertical-align: middle;
+  color: black;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 8px;
 }
-
 .button:hover {
-    color: gray;
+  color: gray;
 }

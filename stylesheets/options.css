@@ -9,9 +9,7 @@ body {
 .noborder {
   border: none !important;
 }
-input[type='checkbox'],
-input[type='radio'],
-label {
+input[type='checkbox'], input[type='radio'], label {
   margin: 0 0px 0px 0;
   line-height: 18px;
   vertical-align: middle;
