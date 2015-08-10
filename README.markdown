@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/joaope/iZoom.svg?branch=master)](https://travis-ci.org/joaope/iZoom)
 [![Analytics](https://ga-beacon.appspot.com/UA-55655362-1/joaope/izoom/readme.markdown)](https://github.com/joaope/izoom)
 
 # iZoom #
