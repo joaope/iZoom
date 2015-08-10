@@ -13,13 +13,13 @@ var zoomLogic = function() {
   var realstatePercentage = (window.innerWidth * 100 / screen.width) / 100;
   var zoom = (zoomMaximumAllow * realstatePercentage);
 
-  if (zoomMode == zoomModes.ShrinkOnly) {
+  if (zoomMode == 0) {
     if (zoom > 100) {
       zoom = 100;
     } else if (zoomMinimumAllow > 0 && zoom < zoomMinimumAllow) {
       zoom = zoomMinimumAllow;
     }
-  } else if (zoomMode == zoomModes.GrowOnly) {
+  } else if (zoomMode == 1) {
     if (zoom < 100) {
       zoom = 100;
     }
