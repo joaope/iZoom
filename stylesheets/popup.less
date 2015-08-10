@@ -1,10 +1,10 @@
 body {
-  margin: 0px;
+  margin: 0;
   min-width: 170px;
   font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
 }
 .nomargin {
-  margin: 0px !important;
+  margin: 0 !important;
 }
 label {
   font-size: 10px;
@@ -16,7 +16,7 @@ label {
   text-align: center;
   padding: 5px 10px;
   border: 1px solid black;
-  background-color: #3DA3DA;
+  background-color: #3da3da;
   color: white;
   font-size: 11px;
   font-weight: bold;
@@ -28,18 +28,18 @@ label {
 }
 .option {
   margin-bottom: 10px;
-}
-.option .option-title {
-  display: block;
-  border-bottom: 1px solid #B9C4DA;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 11px;
+  .option-title {
+    display: block;
+    border-bottom: 1px solid #b9c4da;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 11px;
+  }
 }
 #require-reload {
   width: 150px;
-  border-top: 1px solid #B9C4DA;
-  color: #7B7B91;
+  border-top: 1px solid #b9c4da;
+  color: #7b7b91;
   font-size: 10px;
   margin: 10px auto;
   padding-top: 10px;
@@ -47,10 +47,10 @@ label {
 }
 #more-options-div {
   width: 150px;
-  border-top: 1px solid #B9C4DA;
-  color: #7B7B91;
+  border-top: 1px solid #b9c4da;
+  color: #7b7b91;
   font-size: 10px;
-  margin: 10px auto 0px auto;
+  margin: 10px auto 0;
   padding-top: 10px;
   text-align: center;
 }
@@ -59,7 +59,7 @@ label {
   text-decoration: none;
   border: 1px solid #999;
   border-bottom-color: #999;
-  background-color: #DDD;
+  background-color: #ddd;
   vertical-align: middle;
   color: black;
   font-size: 11px;
@@ -69,7 +69,7 @@ label {
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 8px;
-}
-.button:hover {
-  color: gray;
+  &:hover {
+    color: gray;
+  }
 }

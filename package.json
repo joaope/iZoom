@@ -1,0 +1,37 @@
+{
+  "name": "iZoom",
+  "version": "0.9.11",
+  "description": "Chrome extension that automatically changes zoom level to fit window width",
+  "contributors": [{
+    "name": "João Correia",
+    "email": "joaope@gmail.com"
+  }],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joaope/izoom"
+  },
+  "bugs": {
+    "url": "https://github.com/joaope/izoom/issues"
+  },
+  "keywords": [
+    "izoom",
+    "zoom",
+    "chrome",
+    "extension"
+  ],
+  "dependencies": {
+    "jsuri": "1.3.1"
+  },
+  "devDependencies": {
+    "del": "1.2.0",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-uglify": "1.2.0",
+    "gulp-less": "3.0.3",
+    "gulp-minify-css": "1.2.0",
+    "gulp-if": "1.2.5",
+    "gulp-util": "3.0.6",
+    "gulp-rimraf": "0.1.1"
+  },
+  "license": "MIT"
+}

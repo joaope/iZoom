@@ -16,7 +16,7 @@ function initPopup() {
   $_('zoomMode-growOnly').addEventListener('click', popupQuickSave);
   $_('zoomMode-shrinkAndGrow').addEventListener('click', popupQuickSave);
   $_('advanced-options').addEventListener('click', function() {
-    var optionsUrl = chrome.extension.getURL('options.html');
+    var optionsUrl = chrome.extension.getURL('html/options.html');
 
     chrome.tabs.query({
       url: optionsUrl,

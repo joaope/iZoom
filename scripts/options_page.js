@@ -24,7 +24,7 @@ function initOptions() {
 
   $_('header-bar-name').innerHTML = i18n('options_mainTitle');
   $_('header-bar-version').innerHTML = '(' + i18n('options_version') + ': ' + chrome.runtime.getManifest().version + ')';
-  $_('header-bar-logo').src = chrome.runtime.getManifest().icons["32"];
+  $_('header-bar-logo').src = '/' + chrome.runtime.getManifest().icons["32"];
 
   $_('saveButtonBottom').innerHTML = i18n('options_saveButton');
   $_('cancelButtonBottom').innerHTML = i18n('options_cancelButton');
