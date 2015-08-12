@@ -1,4 +1,6 @@
 [![Build Status](https://travis-ci.org/joaope/iZoom.svg?branch=master)](https://travis-ci.org/joaope/iZoom)
+[![Dependency Status](https://david-dm.org/joaope/izoom.svg)](https://david-dm.org/joaope/izoom)
+[![devDependency Status](https://david-dm.org/joaope/izoom/dev-status.svg)](https://david-dm.org/joaope/izoom#info=devDependencies)
 [![Analytics](https://ga-beacon.appspot.com/UA-55655362-1/joaope/izoom/readme.markdown)](https://github.com/joaope/izoom)
 
 # iZoom #
