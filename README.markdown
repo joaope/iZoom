@@ -19,4 +19,4 @@ The main objective is to have 3 different zoom modes:
 
 ### Options ###
 
-In addition to the zoom mode the user can choose which addresses he/she wants to exclude from being zoomed in/out. This options are be available from options page and on each tab's context menu.
+In addition to the zoom mode the user can choose which addresses he/she wants to exclude from being zoomed in/out. This options are available through options page and on each tab's context menu.
