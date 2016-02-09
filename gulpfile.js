@@ -1,7 +1,7 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var gulpif = require('gulp-if');
-var cssmin = require('gulp-minify-css');
+var cssnano = require('gulp-cssnano');
 var less = require('gulp-less');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -49,7 +49,7 @@ gulp.task('styles', function() {
       base: './'
     })
     .pipe(less())
-    .pipe(gulpif(isToUglify, cssmin()))
+    .pipe(gulpif(isToUglify, cssnano()))
     .pipe(gulp.dest(unpackagedFolder));
 });
 
