@@ -21,7 +21,7 @@
 
   "minimum_chrome_version": "5.0.316.0",
   "background": {
-    "scripts": ["scripts/uri.js", "scripts/options.js", "scripts/background.js"]
+    "scripts": ["scripts/uri.js", "scripts/background.js"]
   },
   "options_page": "html/options.html",
   "content_scripts": [{

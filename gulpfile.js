@@ -9,8 +9,10 @@ var del = require('del')
 var manifest = require('./manifest.json');
 var util = require('util');
 var zip = require('gulp-zip');
+var typescript = require('gulp-typescript');
 
 var isToUglify = false;
+var tsProject = typescript.createProject('tsconfig.json');
 
 var unpackagedFolder = 'dist';
 var packageFolder = 'release';
@@ -19,16 +21,22 @@ gulp.task('uglify_on', function() {
   isToUglify = true;
 })
 
-gulp.task('scripts', function() {
+gulp.task('third_parties', function() {
   return gulp.src([
-      'node_modules/jsuri/Uri.js',
-      'scripts/*.js'
+      'node_modules/jsuri/Uri.js'
     ])
     .pipe(gulpif(isToUglify, uglify({
       mangle: false
     })))
     .pipe(gulp.dest(unpackagedFolder + '/scripts'));
 });
+
+gulp.task('scripts', function() {
+  return tsProject.src()
+    .pipe(typescript(tsProject))
+    .js
+    .pipe(gulp.dest(unpackagedFolder + '/scripts'))
+})
 
 gulp.task('locales', function() {
   return gulp.src(['_locales/**/messages.json'], {
@@ -75,7 +83,7 @@ gulp.task('watch', function() {
     gutil.log(gutil.colors.green('File ' + event.path + ' was ' + event.type + ', running tasks...'));
   };
 
-  gulp.watch(['node_modules/jsuri/Uri.js', 'scripts/*.js'], ['scripts']).on('change', cb);
+  gulp.watch(['node_modules/jsuri/Uri.js', 'tsconfig.json', 'scripts/*.ts'], ['scripts']).on('change', cb);
   gulp.watch('locales/**/messages.json', ['locales']).on('change', cb);
   gulp.watch('media/**/*.*', ['media']).on('change', cb);
   gulp.watch('stylesheets/*.less', ['styles']).on('change', cb);
@@ -88,7 +96,7 @@ gulp.task('watch', function() {
 gulp.task('default', ['watch']);
 
 // moves all files to 'unpackedFolder'
-gulp.task('unpackage', ['clean', 'manifest', 'scripts', 'html', 'media', 'styles', 'locales']);
+gulp.task('unpackage', ['clean', 'manifest', 'scripts', 'third_parties', 'html', 'media', 'styles', 'locales']);
 
 // same as 'unpackage' but minifies .js and .css files first
 gulp.task('unpackage_uglify', ['uglify_on', 'unpackage']);
